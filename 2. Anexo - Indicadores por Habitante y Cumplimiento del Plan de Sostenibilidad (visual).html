@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>Anexo — Indicadores y Cumplimiento</title>
 <style>
   :root{
@@ -68,7 +69,74 @@
   .pill.bad{ background:var(--bad-soft); color:var(--bad); } .pill.bad::before{ background:var(--bad); }
   .pill.warn{ background:var(--warn-soft); color:var(--warn); } .pill.warn::before{ background:var(--warn); }
   footer.doc-footer{ grid-column:1/-1; max-width:680px; margin:24px auto 0; text-align:center; color:var(--ink-faint); font-size:0.8rem; font-style:italic; padding-top:28px; border-top:1px solid var(--line-soft); }
+
+  /* ===== cross-document sidebar ===== */
+  :root{ --sbw:266px; }
+  body{ padding-left:var(--sbw); overflow-x:hidden; }
+  .sb-toggle-input{ display:none; }
+  .sb-toggle-btn{
+    display:none; position:fixed; top:14px; left:14px; z-index:1002;
+    width:40px; height:40px; border-radius:10px; background:var(--bg-raised);
+    border:1px solid var(--line); box-shadow:var(--shadow); color:var(--ink);
+    align-items:center; justify-content:center; font-size:1.05rem; cursor:pointer;
+  }
+  .sb-toggle-btn::before{ content:"☰"; }
+  .sb-toggle-input:checked ~ .sb-toggle-btn::before{ content:"✕"; }
+  .sb-backdrop{ display:none; position:fixed; inset:0; background:rgba(20,18,10,0.45); z-index:999; }
+  .site-sidebar{
+    position:fixed; top:0; left:0; width:var(--sbw); height:100vh; overflow-y:auto;
+    background:var(--bg-raised); border-right:1px solid var(--line); z-index:1000;
+    display:flex; flex-direction:column; padding:22px 0;
+  }
+  .sb-head{ padding:0 22px 16px; border-bottom:1px solid var(--line-soft); margin-bottom:8px; }
+  .sb-eyebrow{ font-size:0.64rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent-ink); font-weight:700; margin-bottom:4px; }
+  .sb-title{ font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif; font-size:1.02rem; font-weight:600; color:var(--ink); line-height:1.28; }
+  .sb-nav{ flex:1; display:flex; flex-direction:column; padding:6px 12px; gap:2px; }
+  .nav-item{
+    display:flex; align-items:flex-start; gap:10px; padding:9px 10px; border-radius:8px;
+    text-decoration:none; color:var(--ink-soft); border-left:3px solid transparent;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  a.nav-item:hover{ background:var(--line-soft); color:var(--ink); }
+  .nav-item.active{ background:var(--accent-soft); border-left-color:var(--accent); color:var(--ink); }
+  .nav-n{
+    flex:none; width:20px; height:20px; border-radius:50%; background:var(--line-soft); color:var(--ink-faint);
+    font-size:0.66rem; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:1px;
+  }
+  .nav-item.active .nav-n{ background:var(--accent); color:var(--bg-raised); }
+  .nav-tx{ display:flex; flex-direction:column; gap:1px; min-width:0; }
+  .nav-title{ font-size:0.81rem; font-weight:600; line-height:1.3; }
+  .nav-item.active .nav-title{ color:var(--accent-ink); }
+  .nav-sub{ font-size:0.69rem; color:var(--ink-faint); }
+  .sb-foot{ padding:14px 22px 0; font-size:0.66rem; color:var(--ink-faint); border-top:1px solid var(--line-soft); margin-top:10px; font-style:italic; }
+  @media (max-width:900px){
+    body{ padding-left:0; }
+    .sb-toggle-btn{ display:flex; }
+    .site-sidebar{ transform:translateX(-100%); transition:transform .25s ease; box-shadow:var(--shadow); }
+    .sb-toggle-input:checked ~ .site-sidebar{ transform:translateX(0); }
+    .sb-toggle-input:checked ~ .sb-backdrop{ display:block; }
+  }
 </style>
+<input type="checkbox" id="sb-toggle" class="sb-toggle-input">
+<label for="sb-toggle" class="sb-toggle-btn" aria-label="Abrir menu de documentos"></label>
+<label for="sb-toggle" class="sb-backdrop"></label>
+<nav class="site-sidebar">
+  <div class="sb-head">
+    <div class="sb-eyebrow">Presupuesto 2026</div>
+    <div class="sb-title">Ayuntamiento de Algeciras</div>
+  </div>
+  <div class="sb-nav">
+    <a class="nav-item" href="0. Glosario y Guía de Lectura (visual).html"><span class="nav-n">0</span><span class="nav-tx"><span class="nav-title">Glosario y Guía de Lectura</span><span class="nav-sub">Leer primero</span></span></a>
+    <a class="nav-item" href="1. Resumen Ejecutivo - Presentación (visual).html"><span class="nav-n">1</span><span class="nav-tx"><span class="nav-title">Resumen Ejecutivo — Presentación</span><span class="nav-sub">Panorama general</span></span></a>
+    <div class="nav-item active"><span class="nav-n">2</span><span class="nav-tx"><span class="nav-title">Indicadores por Habitante</span><span class="nav-sub">Comparativa nacional</span></span></div>
+    <a class="nav-item" href="3. Informe de Intervención - Presupuesto 2026 (visual).html"><span class="nav-n">3</span><span class="nav-tx"><span class="nav-title">Informe de Intervención</span><span class="nav-sub">Informe principal</span></span></a>
+    <a class="nav-item" href="4. Anexo - Historia y Evolución de la Deuda Municipal 2007-2026 (visual).html"><span class="nav-n">4</span><span class="nav-tx"><span class="nav-title">Historia de la Deuda</span><span class="nav-sub">2007 - 2026</span></span></a>
+    <a class="nav-item" href="5. Anexo - Clasificación Orgánica - Presupuesto 2026 (visual).html"><span class="nav-n">5</span><span class="nav-tx"><span class="nav-title">Clasificación Orgánica</span><span class="nav-sub">Por departamento</span></span></a>
+    <a class="nav-item" href="6. Anexo - Grupo de Programa y Concepto - Comparativa 2025-2026 (visual).html"><span class="nav-n">6</span><span class="nav-tx"><span class="nav-title">Grupo de Programa y Concepto</span><span class="nav-sub">2025 vs. 2026</span></span></a>
+  </div>
+  <div class="sb-foot">7 documentos · verificados al céntimo</div>
+</nav>
+
 
 <div class="masthead">
   <div class="eyebrow">Excmo. Ayuntamiento de Algeciras · Anexo al Informe de Intervención</div>
