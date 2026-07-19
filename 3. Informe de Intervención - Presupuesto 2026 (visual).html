@@ -1,0 +1,1040 @@
+<title>Informe de Intervención — Presupuesto 2026</title>
+<style>
+  :root{
+    --bg:#efece4;
+    --bg-raised:#fbfaf6;
+    --ink:#1c1e1a;
+    --ink-soft:#5a5c52;
+    --ink-faint:#8b8c80;
+    --accent:#0e5c4e;
+    --accent-ink:#0e5c4e;
+    --accent-soft:#dbe8e2;
+    --good:#3f7a4e;
+    --good-soft:#e2ede2;
+    --bad:#a23328;
+    --bad-soft:#f3e1de;
+    --warn:#9c6a17;
+    --warn-soft:#f1e6d2;
+    --line:#d7d2c4;
+    --line-soft:#e5e1d4;
+    --shadow: 0 1px 2px rgba(30,30,20,0.06), 0 8px 24px -12px rgba(30,30,20,0.18);
+  }
+  :root[data-theme="dark"]{
+    --bg:#14160f;
+    --bg-raised:#1c1f18;
+    --ink:#e9e7dc;
+    --ink-soft:#aeab9b;
+    --ink-faint:#797868;
+    --accent:#57c2a5;
+    --accent-ink:#7fd7bd;
+    --accent-soft:#1f342c;
+    --good:#7fbf8c;
+    --good-soft:#20301f;
+    --bad:#e2837a;
+    --bad-soft:#392320;
+    --warn:#e0ac5a;
+    --warn-soft:#382c17;
+    --line:#33362a;
+    --line-soft:#282b21;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14160f;
+      --bg-raised:#1c1f18;
+      --ink:#e9e7dc;
+      --ink-soft:#aeab9b;
+      --ink-faint:#797868;
+      --accent:#57c2a5;
+      --accent-ink:#7fd7bd;
+      --accent-soft:#1f342c;
+      --good:#7fbf8c;
+      --good-soft:#20301f;
+      --bad:#e2837a;
+      --bad-soft:#392320;
+      --warn:#e0ac5a;
+      --warn-soft:#382c17;
+      --line:#33362a;
+      --line-soft:#282b21;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+  }
+  h1,h2,h3{
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+    text-wrap:balance;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .num{ font-variant-numeric:tabular-nums; }
+
+  .shell{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 clamp(16px,4vw,40px) 96px;
+    display:grid;
+    grid-template-columns:220px minmax(0,760px);
+    gap:56px;
+    justify-content:center;
+  }
+  @media (max-width:900px){
+    .shell{ grid-template-columns:1fr; }
+    nav.toc{ display:none; }
+  }
+
+  /* Masthead */
+  .masthead{
+    grid-column:1/-1;
+    max-width:820px;
+    margin:0 auto;
+    text-align:center;
+    padding:56px 20px 36px;
+    border-bottom:3px double var(--line);
+  }
+  .masthead .eyebrow{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--accent-ink);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .masthead h1{
+    font-size:clamp(1.7rem,3.4vw,2.5rem);
+    margin:0 0 10px;
+    line-height:1.15;
+  }
+  .masthead .sub{
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    max-width:560px;
+    margin:0 auto 18px;
+  }
+  .masthead .meta{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+    font-size:0.78rem;
+    color:var(--ink-faint);
+    letter-spacing:0.02em;
+  }
+  .masthead .meta span b{ color:var(--ink-soft); font-weight:600; }
+
+  /* TOC */
+  nav.toc{
+    position:sticky;
+    top:32px;
+    align-self:start;
+    font-size:0.84rem;
+  }
+  nav.toc .toc-label{
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  nav.toc ol{
+    list-style:none;
+    margin:0;
+    padding:0;
+    border-left:1px solid var(--line);
+  }
+  nav.toc li{ margin:0; }
+  nav.toc a{
+    display:block;
+    padding:6px 0 6px 14px;
+    margin-left:-1px;
+    border-left:1px solid transparent;
+    color:var(--ink-soft);
+    text-decoration:none;
+  }
+  nav.toc a:hover{ color:var(--accent-ink); border-left-color:var(--accent); }
+
+  main{ min-width:0; }
+
+  section{
+    padding:40px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  section:last-child{ border-bottom:none; }
+  section h2{
+    font-size:1.5rem;
+    margin:0 0 6px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  section h2 .n{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    color:var(--accent-ink);
+    font-weight:700;
+    font-size:0.95rem;
+  }
+  section h3{
+    font-size:1.08rem;
+    margin:28px 0 10px;
+  }
+  section > p{ color:var(--ink); max-width:66ch; }
+  section > p.lede{
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    margin-top:0;
+    max-width:64ch;
+  }
+
+  /* KPI grid for executive summary */
+  .kpi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    margin:22px 0;
+  }
+  .kpi{
+    background:var(--bg-raised);
+    padding:16px 18px;
+  }
+  .kpi .label{
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-bottom:8px;
+  }
+  .kpi .value{
+    font-size:1.3rem;
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+    line-height:1.2;
+  }
+  .kpi .note{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+
+  /* status pills */
+  .pill{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:3px 10px 3px 8px;
+    border-radius:100px;
+    font-size:0.74rem;
+    font-weight:700;
+    letter-spacing:0.02em;
+    white-space:nowrap;
+  }
+  .pill::before{ content:""; width:6px; height:6px; border-radius:50%; }
+  .pill.good{ background:var(--good-soft); color:var(--good); }
+  .pill.good::before{ background:var(--good); }
+  .pill.bad{ background:var(--bad-soft); color:var(--bad); }
+  .pill.bad::before{ background:var(--bad); }
+  .pill.warn{ background:var(--warn-soft); color:var(--warn); }
+  .pill.warn::before{ background:var(--warn); }
+
+  /* tables */
+  .table-wrap{
+    overflow-x:auto;
+    margin:18px 0;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--bg-raised);
+  }
+  table{
+    border-collapse:collapse;
+    width:100%;
+    font-size:0.86rem;
+  }
+  caption{
+    text-align:left;
+    font-size:0.76rem;
+    color:var(--ink-faint);
+    padding:10px 14px 0;
+  }
+  th,td{
+    padding:9px 14px;
+    text-align:left;
+    border-bottom:1px solid var(--line-soft);
+    white-space:nowrap;
+  }
+  th{
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    font-weight:600;
+    background:var(--line-soft);
+  }
+  td.num, th.num{ text-align:right; font-variant-numeric:tabular-nums; }
+  tr:last-child td{ border-bottom:none; }
+  tr.total td{ font-weight:700; border-top:1px solid var(--ink-faint); }
+  td.wrap, th.wrap{ white-space:normal; }
+  .table-wrap table{ min-width:560px; }
+
+  /* callout / pull quote */
+  .callout{
+    background:var(--accent-soft);
+    border-left:3px solid var(--accent);
+    border-radius:0 8px 8px 0;
+    padding:16px 20px;
+    margin:20px 0;
+    font-size:0.93rem;
+  }
+  .callout b{ color:var(--accent-ink); }
+
+  /* confrontation component */
+  .confrontation{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin:22px 0;
+  }
+  @media (max-width:640px){ .confrontation{ grid-template-columns:1fr; } }
+  .confrontation .side{
+    border-radius:10px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+  }
+  .confrontation .side.ayto{ background:var(--bg-raised); border:1px solid var(--line); }
+  .confrontation .side.min{ background:var(--bad-soft); border:1px solid color-mix(in srgb, var(--bad) 30%, transparent); }
+  .confrontation .who{
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .confrontation .side.ayto .who{ color:var(--ink-faint); }
+  .confrontation .side.min .who{ color:var(--bad); }
+  .confrontation .side p{ margin:0; font-size:0.92rem; }
+  .confrontation .side.min p{ color:var(--ink); }
+
+  .row-item{
+    padding:12px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:0.9rem;
+  }
+  .row-item:last-child{ border-bottom:none; }
+  .row-item .tag{
+    font-variant-numeric:tabular-nums;
+    color:var(--ink-faint);
+    font-size:0.78rem;
+    margin-right:8px;
+  }
+
+  ul.clean, ol.clean{ padding-left:1.2em; margin:12px 0; }
+  ul.clean li, ol.clean li{ margin:6px 0; }
+
+  footer.doc-footer{
+    grid-column:1/-1;
+    max-width:640px;
+    margin:24px auto 0;
+    text-align:center;
+    color:var(--ink-faint);
+    font-size:0.8rem;
+    font-style:italic;
+    padding-top:28px;
+    border-top:1px solid var(--line-soft);
+  }
+
+  a{ color:var(--accent-ink); }
+</style>
+
+<div class="masthead">
+  <div class="eyebrow">Excmo. Ayuntamiento de Algeciras · Expediente 6536/2026</div>
+  <h1>Informe técnico de análisis del<br>Presupuesto General 2026</h1>
+  <p class="sub">Elaborado con criterio de Intervención municipal — legalidad, estabilidad presupuestaria y sostenibilidad financiera, con la mayor objetividad técnica posible.</p>
+  <div class="meta">
+    <span><b>Alcance</b> Entidad Local + EMCALSA + ALGESA</span>
+    <span><b>Base</b> Presupuesto 2026 · Liquidación 2025</span>
+    <span><b>Secciones</b> 11 + anexo</span>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="toc">
+    <div class="toc-label">Índice</div>
+    <ol>
+      <li><a href="#s0">0 · Alcance y método</a></li>
+      <li><a href="#s1">1 · Resumen ejecutivo</a></li>
+      <li><a href="#s2">2 · Estados consolidados</a></li>
+      <li><a href="#s3">3 · Ingresos</a></li>
+      <li><a href="#s4">4 · Gastos</a></li>
+      <li><a href="#s5">5 · Personal</a></li>
+      <li><a href="#s6">6 · Deuda y sostenibilidad</a></li>
+      <li><a href="#s7">7 · Inversiones</a></li>
+      <li><a href="#s8">8 · Liquidación 2025</a></li>
+      <li><a href="#s9">9 · Alegaciones</a></li>
+      <li><a href="#s10">10 · Incidencias documentales</a></li>
+      <li><a href="#s11">11 · Plan de gobierno (8 años)</a></li>
+      <li><a href="#s12">12 · Conclusiones</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section id="s0">
+      <h2><span class="n">0</span> Objeto, alcance y metodología</h2>
+      <p>Este informe analiza el Proyecto de Presupuesto General del Ayuntamiento de Algeciras para 2026 (Entidad Local + EMCALSA + ALGESA), a partir del expediente oficial: Informe Económico-Financiero, Memoria de Alcaldía, Estados Consolidados, Bases de Ejecución, Plan de Inversiones, cuadro de Deuda y Financiación, plantillas de personal, desgloses de ingresos/gastos, y las liquidaciones de 2024-2025 como referencia de ejecución real.</p>
+      <div class="callout">
+        <b>Limitación documental.</b> <code>Liquidación 2024</code> es un PDF íntegramente escaneado (705 páginas) sin capa de texto reconocible — no se ha podido extraer. El análisis histórico se apoya solo en la <b>Liquidación 2025</b>. Además, el fichero de "Aplicaciones del presupuesto de gastos" presenta una conversión incompleta y se ha descartado como fuente.
+      </div>
+      <p class="lede">Todas las demás cifras citadas en este informe han sido verificadas por al menos dos fuentes documentales independientes que cuadran entre sí, y las más relevantes se han contrastado directamente contra el PDF original.</p>
+      <p class="lede"><b>Marco normativo:</b> RDL 2/2004 (TRLRHL), RD 500/1990, Orden EHA/3565/2008, LO 2/2012 (LOEPSF), RDL 17/2014 y Orden PRE/966/2014, RDL 8/2013 (Fondo de Financiación a EE.LL.), Orden HAP/2105/2012.</p>
+    </section>
+
+    <section id="s1">
+      <h2><span class="n">1</span> Resumen ejecutivo</h2>
+
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="label">Presupuesto Entidad Local</div>
+          <div class="value num">136.366.671,60 €</div>
+          <div class="note">Ingresos = Gastos, nivelado</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Superávit consolidado</div>
+          <div class="value num">+874.569,35 €</div>
+          <div class="note">137,35M€ ingresos vs 136,48M€ gastos</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Estabilidad presupuestaria</div>
+          <div class="value"><span class="pill good">CUMPLE</span></div>
+          <div class="note">+1,13% s/ingresos no financieros</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Regla de Gasto</div>
+          <div class="value"><span class="pill bad">NO CUMPLE</span></div>
+          <div class="note">Excede el límite en 3,89M€ (7,28% vs 3,50%)</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Deuda viva / ingresos corrientes</div>
+          <div class="value num" style="color:var(--bad)">195,91%</div>
+          <div class="note">Límite legal: 110% — excede en 108,6M€</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Ahorro neto</div>
+          <div class="value num" style="color:var(--bad)">Negativo</div>
+          <div class="note">-3,39M€ (mejora a -136k€ con senda 2026)</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Personal (Cap. I, Entidad Local)</div>
+          <div class="value num">41.862.683,02 €</div>
+          <div class="note">+0,86% sobre lo ejecutado en 2025</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Plan de Ajuste vigente</div>
+          <div class="value num">Hasta 2070</div>
+          <div class="note">Horizonte de saneamiento de largo plazo</div>
+        </div>
+      </div>
+
+      <h3>Los cinco hallazgos más relevantes</h3>
+      <ol class="clean">
+        <li><b>El presupuesto está formalmente equilibrado y cumple la estabilidad presupuestaria, pero incumple oficialmente la Regla de Gasto</b> — no es una valoración de este informe, lo declara el propio Informe de Intervención municipal incorporado al expediente.</li>
+        <li><b>El nivel de deuda (195,91% de los ingresos corrientes) es el principal factor de riesgo estructural</b>, muy por encima del límite legal del 110%, y explica la tutela financiera del Estado (Plan de Ajuste, Plan de Sostenibilidad Financiera, Fondo de Financiación a EE.LL.) con horizonte hasta 2070.</li>
+        <li><b>El informe vinculante del Ministerio de Hacienda contradice en varios puntos la autoevaluación favorable del propio Ayuntamiento</b> — ver contraste detallado en la sección 6.</li>
+        <li><b>La caída del 93% en la amortización de deuda de 2026</b> responde a un periodo de carencia de capital en varios préstamos del Fondo de Ordenación: alivio previsiblemente puntual, no una mejora estructural confirmada.</li>
+        <li><b>La documentación del expediente contiene numerosas inconsistencias internas</b> (cifras que no coinciden entre texto y tablas, un signo invertido, fechas contradictorias) que no alteran las cifras aprobadas pero son relevantes para el control de calidad documental.</li>
+      </ol>
+    </section>
+
+    <section id="s2">
+      <h2><span class="n">2</span> Estados consolidados y nivelación</h2>
+      <p class="lede">Cuadro oficial del Estado de Consolidación de Presupuestos 2026, por entidad.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Ingresos por capítulo (€)</caption>
+          <thead><tr><th>Cap.</th><th class="wrap">Denominación</th><th class="num">Entidad Local</th><th class="num">EMCALSA</th><th class="num">ALGESA</th><th class="num">Consolidación</th></tr></thead>
+          <tbody>
+            <tr><td>I</td><td class="wrap">Impuestos Directos</td><td class="num">48.542.317,00</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">48.542.317,00</td></tr>
+            <tr><td>II</td><td class="wrap">Impuestos Indirectos</td><td class="num">5.306.250,50</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">5.305.250,50</td></tr>
+            <tr><td>III</td><td class="wrap">Tasas y Otros Ingresos</td><td class="num">19.115.972,63</td><td class="num">75.262,00</td><td class="num">912.010,25</td><td class="num">20.103.244,88</td></tr>
+            <tr><td>IV</td><td class="wrap">Transferencias Corrientes</td><td class="num">59.197.787,70</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">59.197.787,70</td></tr>
+            <tr><td>V</td><td class="wrap">Ingresos Patrimoniales</td><td class="num">678.050,20</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">678.050,20</td></tr>
+            <tr><td>VII</td><td class="wrap">Transferencias de Capital</td><td class="num">3.525.693,57</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">3.525.693,57</td></tr>
+            <tr><td>VIII</td><td class="wrap">Activos Financieros</td><td class="num">600,00</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">600,00</td></tr>
+            <tr class="total"><td colspan="2">TOTAL</td><td class="num">136.366.671,60</td><td class="num">75.262,00</td><td class="num">912.010,25</td><td class="num">137.352.943,85</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Gastos por capítulo (€)</caption>
+          <thead><tr><th>Cap.</th><th class="wrap">Denominación</th><th class="num">Entidad Local</th><th class="num">EMCALSA</th><th class="num">ALGESA</th><th class="num">Consolidación</th></tr></thead>
+          <tbody>
+            <tr><td>I</td><td class="wrap">Personal</td><td class="num">41.862.683,02</td><td class="num">1.564.269,40</td><td class="num">22.706.197,69</td><td class="num">66.133.150,11</td></tr>
+            <tr><td>II</td><td class="wrap">Bienes Corrientes</td><td class="num">48.965.248,62</td><td class="num">257.179,94</td><td class="num">2.393.687,40</td><td class="num">51.616.115,96</td></tr>
+            <tr><td>III</td><td class="wrap">Financieros</td><td class="num">1.984.701,30</td><td class="num">500,00</td><td class="num">2.000,00</td><td class="num">1.987.201,30</td></tr>
+            <tr><td>IV</td><td class="wrap">Transf. Corrientes</td><td class="num">33.511.901,38</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">6.699.769,85</td></tr>
+            <tr><td>V</td><td class="wrap">Fondo Contingencia</td><td class="num">1.337.286,52</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">1.337.286,52</td></tr>
+            <tr><td>VI</td><td class="wrap">Inversiones Reales</td><td class="num">8.051.530,90</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">8.051.530,90</td></tr>
+            <tr><td>VIII</td><td class="wrap">Activos Financieros</td><td class="num">600,00</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">600,00</td></tr>
+            <tr><td>IX</td><td class="wrap">Pasivos Financieros</td><td class="num">652.719,86</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">652.719,86</td></tr>
+            <tr class="total"><td colspan="2">TOTAL</td><td class="num">136.366.671,60</td><td class="num">1.821.949,34</td><td class="num">25.101.885,09</td><td class="num">136.478.374,50</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">El Cap. IV de Gastos baja de 33,51M€ (Entidad Local) a 6,70M€ en consolidación porque 26.812.131,53 € son transferencias internas a EMCALSA/ALGESA, eliminadas para evitar doble cómputo.</p>
+
+      <h3>Hallazgo: error aritmético en la fila TOTALES de Gastos</h3>
+      <p>El documento oficial publica <b class="num">109.554.540,07 €</b> como total "Entidad Local" de Gastos — cifra que <b>no coincide</b> con la suma de sus propias filas de capítulo (que dan exactamente <b class="num">136.366.671,60 €</b>, coincidente con Ingresos y confirmado por siete ficheros de detalle independientes).</p>
+      <p>El origen se identifica con precisión en el propio expediente: 109.554.540,07 € es en realidad el resultado de restar al total de la Entidad Local las operaciones internas con sus sociedades (26.812.131,53 €) — una magnitud distinta, trasladada por error a la casilla del total bruto. <b>No afecta al equilibrio real del presupuesto</b> (correcto: 136.366.671,60 € = 136.366.671,60 €), pero es una incidencia de control de calidad documental.</p>
+
+      <h3>Comparativa interanual 2026 vs 2025 (consolidado)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Cap.</th><th class="wrap">Concepto</th><th class="num">2026</th><th class="num">2025</th><th class="num">Δ %</th></tr></thead>
+          <tbody>
+            <tr><td>I</td><td class="wrap">Impuestos Directos</td><td class="num">48.542.317,00</td><td class="num">48.629.233,60</td><td class="num">-0,18%</td></tr>
+            <tr><td>II</td><td class="wrap">Impuestos Indirectos</td><td class="num">5.305.250,50</td><td class="num">4.852.265,88</td><td class="num">+9,34%</td></tr>
+            <tr><td>III</td><td class="wrap">Tasas y Otros Ingresos</td><td class="num">20.103.244,88</td><td class="num">18.810.147,81</td><td class="num">+6,87%</td></tr>
+            <tr><td>IV</td><td class="wrap">Transf. Corrientes (ingr.)</td><td class="num">59.197.787,70</td><td class="num">52.948.975,52</td><td class="num">+11,80%</td></tr>
+            <tr><td>VII</td><td class="wrap">Transf. de Capital</td><td class="num">3.525.693,57</td><td class="num">1.820.525,00</td><td class="num">+93,66%</td></tr>
+            <tr class="total"><td colspan="2">Total Ingresos</td><td class="num">137.352.943,85</td><td class="num">130.830.521,29</td><td class="num">+4,75%</td></tr>
+            <tr><td>I</td><td class="wrap">Personal</td><td class="num">66.133.150,11</td><td class="num">64.460.268,43</td><td class="num">+2,60%</td></tr>
+            <tr><td>II</td><td class="wrap">Bienes Corrientes</td><td class="num">51.616.115,96</td><td class="num">40.583.633,61</td><td class="num" style="color:var(--warn)">+27,18%</td></tr>
+            <tr><td>VI</td><td class="wrap">Inversiones Reales</td><td class="num">8.051.530,90</td><td class="num">5.256.261,21</td><td class="num">+53,18%</td></tr>
+            <tr><td>IX</td><td class="wrap">Pasivos Financ. (gasto)</td><td class="num">652.719,86</td><td class="num">9.697.552,65</td><td class="num" style="color:var(--bad)">-93,27%</td></tr>
+            <tr class="total"><td colspan="2">Total Gastos</td><td class="num">136.478.374,50</td><td class="num">130.334.937,61</td><td class="num">+4,71%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Nota de perímetro: a nivel <b>Entidad Local</b> (sin EMCALSA/ALGESA), Personal crece +1,69% y Bienes Corrientes +29,79% — la memoria municipal usa ambos perímetros sin siempre aclararlo (ver §10).</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="n">3</span> Análisis de ingresos</h2>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Estructura por capítulo — Entidad Local (136.366.671,60 €)</caption>
+          <thead><tr><th>Cap.</th><th class="wrap">Concepto</th><th class="num">Importe</th><th class="num">% total</th></tr></thead>
+          <tbody>
+            <tr><td>IV</td><td class="wrap">Transferencias Corrientes</td><td class="num">59.197.787,70</td><td class="num">43,41%</td></tr>
+            <tr><td>I</td><td class="wrap">Impuestos Directos</td><td class="num">48.542.317,00</td><td class="num">35,60%</td></tr>
+            <tr><td>III</td><td class="wrap">Tasas y Otros Ingresos</td><td class="num">19.115.972,63</td><td class="num">14,02%</td></tr>
+            <tr><td>II</td><td class="wrap">Impuestos Indirectos</td><td class="num">5.306.250,50</td><td class="num">3,89%</td></tr>
+            <tr><td>VII</td><td class="wrap">Transferencias de Capital</td><td class="num">3.525.693,57</td><td class="num">2,59%</td></tr>
+            <tr><td>V</td><td class="wrap">Ingresos Patrimoniales</td><td class="num">678.050,20</td><td class="num">0,50%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout"><b>Autonomía financiera:</b> ingresos propios (I+II+III+V) = 73.642.590,33 € (<b>54,00%</b>); externos (IV+VII) = 62.723.481,27 € (45,99%). Ajustando por 6,77M€ de tributos estatales cedidos (IRPF, IVA), la autonomía real baja a <b>≈49,3%</b>.</div>
+
+      <h3>Desglose del Capítulo I — Impuestos Directos</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Concepto</th><th class="num">Importe 2026</th><th class="num">% Cap. I</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">IBI urbana</td><td class="num">31.630.610,00</td><td class="num">65,15%</td></tr>
+            <tr><td class="wrap">IVTM</td><td class="num">7.016.016,00</td><td class="num">14,45%</td></tr>
+            <tr><td class="wrap">IRPF (cesión Estado)</td><td class="num">3.362.200,00</td><td class="num">6,93%</td></tr>
+            <tr><td class="wrap">IBI características especiales</td><td class="num">2.728.000,00</td><td class="num">5,62%</td></tr>
+            <tr><td class="wrap">IAE</td><td class="num">2.558.625,00</td><td class="num">5,27%</td></tr>
+            <tr><td class="wrap">IIVTNU</td><td class="num">1.025.611,00</td><td class="num">2,11%</td></tr>
+            <tr><td class="wrap">IBI rústica</td><td class="num">221.255,00</td><td class="num">0,46%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>La caída de -0,18% del capítulo <b>no se explica frente a lo realmente recaudado</b>: comparado con los Derechos Reconocidos reales de 2025, el Cap. I en realidad <b style="color:var(--good)">sube +0,67%</b>. La bajada solo aparece frente al Presupuesto Inicial 2025, fijado por encima de lo finalmente liquidado.</p>
+
+      <h3>Riesgos identificados en ingresos</h3>
+      <div class="row-item"><span class="pill warn">Previsión</span> 4 de 6 conceptos del Cap. I usan literalmente el dato de 2025 como previsión 2026 — no incorrecto, pero no es estimación técnica propia.</div>
+      <div class="row-item"><span class="pill warn">Sin justificar</span> Multas de tráfico: de un histórico 94.793 €–887.540 € (2018-23) saltan a <b class="num">2.916.000 €</b> en 2026 — multiplican por 3-10 sin justificación explícita en el expediente.</div>
+      <div class="row-item"><span class="pill warn">Sin justificar</span> Transferencia de Ayuda a Domicilio (Junta de Andalucía): <b>+59,9%</b> interanual (6,6M€ → 10,56M€) sin desglose numérico de la causa.</div>
+      <div class="row-item"><span class="pill bad">Contradicción</span> Cap. V: el texto narrativo dice "+1,03%"; las tres tablas oficiales del mismo documento dan "-5,13%". Prevalece la cifra de las tablas.</div>
+      <div class="row-item"><span class="pill bad">Riesgo alto</span> Cap. VII (Transferencias de Capital): +310,91% sobre los Derechos Reconocidos reales de 2025. Este capítulo tuvo en 2025 la peor ejecución de todo el presupuesto (30,21% reconocido, recaudación líquida <b>negativa</b>). Es el capítulo de ingresos con mayor riesgo de desviación en 2026.</div>
+    </section>
+
+    <section id="s4">
+      <h2><span class="n">4</span> Análisis de gastos</h2>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Estructura por capítulo — Entidad Local</caption>
+          <thead><tr><th>Cap.</th><th class="wrap">Concepto</th><th class="num">Importe</th><th class="num">% total</th></tr></thead>
+          <tbody>
+            <tr><td>II</td><td class="wrap">Bienes Corrientes y Servicios</td><td class="num">48.965.248,62</td><td class="num">35,91%</td></tr>
+            <tr><td>I</td><td class="wrap">Personal</td><td class="num">41.862.683,02</td><td class="num">30,70%</td></tr>
+            <tr><td>IV</td><td class="wrap">Transferencias Corrientes</td><td class="num">33.511.901,38</td><td class="num">24,58%</td></tr>
+            <tr><td>VI</td><td class="wrap">Inversiones Reales</td><td class="num">8.051.530,90</td><td class="num">5,90%</td></tr>
+            <tr><td>III</td><td class="wrap">Financieros</td><td class="num">1.984.701,30</td><td class="num">1,46%</td></tr>
+            <tr><td>V</td><td class="wrap">Fondo Contingencia</td><td class="num">1.337.286,52</td><td class="num">0,98%</td></tr>
+            <tr><td>IX</td><td class="wrap">Pasivos Financieros</td><td class="num">652.719,86</td><td class="num">0,48%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede"><b>Rigidez del gasto</b> (Cap. I+III+IX / total) = <b class="num">32,63%</b> formal. Sumando el gasto esencial externalizado por contrato plurianual (Ayuda a Domicilio + Parques y Jardines + ALGESA-limpieza + Alumbrado ≈ 50,9M€ más), la rigidez de facto es considerablemente mayor.</p>
+
+      <h3>Top 15 programas por dotación (79,5% del gasto en los 20 mayores)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Programa</th><th class="num">Importe</th><th class="num">% total</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Transferencia a ALGESA (limpieza/residuos)</td><td class="num">22.410.000,00</td><td class="num">16,43%</td></tr>
+            <tr><td class="wrap">Ayuda a Domicilio</td><td class="num">13.712.500,01</td><td class="num">10,06%</td></tr>
+            <tr><td class="wrap">Policía Local</td><td class="num">12.816.274,20</td><td class="num">9,40%</td></tr>
+            <tr><td class="wrap">Parques y Jardines</td><td class="num">11.160.096,49</td><td class="num">8,18%</td></tr>
+            <tr><td class="wrap">Servicios Generales</td><td class="num">6.529.541,33</td><td class="num">4,79%</td></tr>
+            <tr><td class="wrap">Urbanismo</td><td class="num">5.148.912,12</td><td class="num">3,78%</td></tr>
+            <tr><td class="wrap">Administración General Deportes</td><td class="num">4.436.271,37</td><td class="num">3,25%</td></tr>
+            <tr><td class="wrap">Consorcio Provincial de Bomberos</td><td class="num">3.926.484,00</td><td class="num">2,88%</td></tr>
+            <tr><td class="wrap">Alumbrado Público</td><td class="num">3.575.680,93</td><td class="num">2,62%</td></tr>
+            <tr><td class="wrap">Vías Públicas</td><td class="num">3.555.342,12</td><td class="num">2,61%</td></tr>
+            <tr><td class="wrap">Playas</td><td class="num">3.122.465,74</td><td class="num">2,29%</td></tr>
+            <tr><td class="wrap">Tesorería (incl. recaudación externa)</td><td class="num">2.801.735,41</td><td class="num">2,05%</td></tr>
+            <tr><td class="wrap">Asistencia a Personas Dependientes</td><td class="num">2.690.132,95</td><td class="num">1,97%</td></tr>
+            <tr><td class="wrap">Transferencia a ALGESA (transporte)</td><td class="num">2.273.131,53</td><td class="num">1,67%</td></tr>
+            <tr><td class="wrap">Cultura</td><td class="num">2.061.313,83</td><td class="num">1,51%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Bloques agregados: Servicios Sociales (23xxx) = 17,26M€ (12,66%) · Seguridad y Movilidad Ciudadana = 14,55M€ (10,67%, Policía Local 88,1% de ello) · ALGESA+EMCALSA = 26,81M€ (19,66% del presupuesto, 80% de todo el Cap. IV).</p>
+
+      <h3>El incremento del Capítulo II (+11.238.773,87 €, +29,79% Entidad Local)</h3>
+      <p>Mayor variación porcentual del presupuesto. 18 partidas explican el 98,3% del incremento; las dos primeras concentran el <b>62,9%</b>:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Partida</th><th class="num">2025</th><th class="num">2026</th><th class="num">Diferencia</th><th class="num">% incremento</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Ayuda a Domicilio</td><td class="num">9.490.381,00</td><td class="num">13.502.500,00</td><td class="num">+4.012.119,00</td><td class="num">35,70%</td></tr>
+            <tr><td class="wrap">Mantenim. Parques y Jardines (nueva concesión)</td><td class="num">7.741.305,36</td><td class="num">10.800.000,00</td><td class="num">+3.058.694,64</td><td class="num">27,22%</td></tr>
+            <tr><td class="wrap">Mantenim. Vías y Obras (daños temporales)</td><td class="num">500.000,00</td><td class="num">1.354.392,93</td><td class="num">+854.392,93</td><td class="num">7,60%</td></tr>
+            <tr><td class="wrap">Festejos Feria</td><td class="num">576.652,68</td><td class="num">955.850,00</td><td class="num">+379.197,32</td><td class="num">3,37%</td></tr>
+            <tr><td class="wrap">Resto (14 partidas menores)</td><td class="num">—</td><td class="num">—</td><td class="num">+2.934.220,10</td><td class="num">26,11%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Ayuda a Domicilio se financia en un 78% (10,56M€) con transferencia finalista de la Junta; impacto neto sobre fondos propios ≈2,94M€. Parques y Jardines sustituye un pliego de +20 años sin actualizar.</p>
+
+      <div class="callout"><b>Riesgo de concentración:</b> Ayuda a Domicilio (100% un único contrato), Parques y Jardines (96,8%), Cap. IV (80% en solo dos sociedades municipales). Cualquier incidencia contractual comprometería una parte significativa del gasto corriente.</div>
+    </section>
+
+    <section id="s5">
+      <h2><span class="n">5</span> Personal</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Colectivo</th><th class="num">Plazas</th><th class="num">Vacantes</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Funcionarios</td><td class="num">608</td><td class="num">155 (+7 reservadas) · 25,5-26,6%</td></tr>
+            <tr><td class="wrap">Personal laboral (fijo+indefinido)</td><td class="num">~148 (estimado)</td><td class="num">~24 (estimado)</td></tr>
+            <tr><td class="wrap">Personal eventual (confianza)</td><td class="num">27</td><td class="num">6</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><b>Gasto de Personal</b> (Cap. I Entidad Local): 41.862.683,02 € (+1,69% s/Inicial 2025; <b style="color:var(--warn)">solo +0,86%</b> sobre lo realmente ejecutado en 2025 — margen muy ajustado).</p>
+      <p><b>Personal eventual:</b> coste total entre 1.238.109,61 € y 1.287.741,86 € según el fichero (discrepancia de ~49.632 € entre los dos documentos de personal eventual), ≈<b>3%</b> del gasto de personal de la Entidad Local.</p>
+
+      <div class="callout">
+        <b>Incidencia — <code>Personal- REVISAR.md</code>:</b> este informe interno afirma literalmente un "DECREMENTO" de 696.487,21 € en el Capítulo I, cuando la comprobación aritmética (41.166.195,81 + 696.487,21 = 41.862.683,02 €) demuestra que es un <b>incremento</b>. Data además el expediente como del ejercicio "2025" en su encabezado. Compatible con una plantilla de un informe anterior reutilizada sin actualizar — de ahí, probablemente, que se marcara como pendiente de revisión.
+      </div>
+    </section>
+
+    <section id="s6">
+      <h2><span class="n">6</span> Deuda y sostenibilidad financiera</h2>
+      <p class="lede">La sección de mayor riesgo del presupuesto.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Indicador</th><th class="num">Valor</th><th class="wrap">Referencia legal</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Deuda viva (31/12/2025)</td><td class="num" style="color:var(--bad); font-weight:700">247.722.751,96</td><td class="wrap">—</td></tr>
+            <tr><td class="wrap">Recursos ordinarios liquidados 2025</td><td class="num">126.444.372,18</td><td class="wrap">—</td></tr>
+            <tr><td class="wrap"><b>Ratio Deuda Viva / Ingresos Corrientes</b></td><td class="num" style="color:var(--bad); font-weight:700">195,91%</td><td class="wrap">Límite legal: 110% (art. 53 TRLRHL)</td></tr>
+            <tr><td class="wrap">Importe-límite al 110%</td><td class="num">139.088.809,40</td><td class="wrap">Exceso actual: 108.633.942,56 €</td></tr>
+            <tr><td class="wrap">Ahorro Neto (Entidad Local)</td><td class="num" style="color:var(--bad)">-3.394.727,53</td><td class="wrap">Mejora a -136.447,45 € con senda 2026 — sigue negativo</td></tr>
+            <tr><td class="wrap">PMP proveedores (feb-2026)</td><td class="num">25,69 días</td><td class="wrap">Límite Plan de Ajuste: 70,21 días — se cumple</td></tr>
+            <tr><td class="wrap">Plan de Ajuste vigente</td><td class="num">Hasta 2070</td><td class="wrap">Horizonte de saneamiento de largo plazo</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>La deuda viva se concentra en operaciones a largo plazo con Unicaja/ICO bajo el <b>Fondo de Ordenación</b> (RDL 8/2013) — un único préstamo de reagrupación concentra 187,8 de los 247,7 M€.</p>
+
+      <h3>¿Por qué cae un 93% la amortización en 2026?</h3>
+      <p>El detalle certificado operación por operación muestra que <b>cinco préstamos del Fondo de Ordenación</b> (2022-2024) pagan intereses en 2026 pero tienen amortización de capital = <b class="num">0,00 €</b> — el patrón característico de un <b>periodo de carencia</b>. Ninguna operación se ha extinguido. No hay calendario posterior a 2026 en el expediente, por lo que no puede confirmarse si el alivio es estructural o transitorio; el patrón detectado sugiere que es más probablemente transitorio.</p>
+
+      <h3>Contraste: Ayuntamiento vs. Ministerio de Hacienda</h3>
+      <p class="lede">El expediente incorpora el informe vinculante de la Secretaría General de Financiación Autonómica y Local (14/04/2026, preceptivo según art. 45.4 RDL 17/2014 — sin él el presupuesto no entra en vigor).</p>
+
+      <div class="confrontation">
+        <div class="side ayto">
+          <div class="who">Posición del Ayuntamiento</div>
+          <p>"No supone, en términos netos, un desequilibrio estructural" (sobre el crecimiento del +29,79% del Cap. II)</p>
+        </div>
+        <div class="side min">
+          <div class="who">Posición del Ministerio (SGFAL)</div>
+          <p>"No se ha dado cumplimiento a los compromisos del Plan de Sostenibilidad Financiera"</p>
+        </div>
+      </div>
+      <div class="confrontation">
+        <div class="side ayto">
+          <div class="who">Límite de gastos de funcionamiento (Cap. I+II)</div>
+          <p>No se pronuncia expresamente</p>
+        </div>
+        <div class="side min">
+          <div class="who">Ministerio</div>
+          <p>"El Ayuntamiento no cumple con el límite que le aplica en 2026"</p>
+        </div>
+      </div>
+      <div class="confrontation">
+        <div class="side ayto">
+          <div class="who">Saldo cuenta 413</div>
+          <p>El Plan de Ajuste comprometía saldo cero</p>
+        </div>
+        <div class="side min">
+          <div class="who">Ministerio</div>
+          <p>2.132.669,40 € pendientes — "no se ajusta a lo comprometido en el plan de ajuste"</p>
+        </div>
+      </div>
+      <div class="confrontation">
+        <div class="side ayto">
+          <div class="who">Provisión por dudoso cobro (RTGG)</div>
+          <p>Sin pronunciamiento expreso en la memoria municipal</p>
+        </div>
+        <div class="side min">
+          <div class="who">Ministerio</div>
+          <p>Dotación inferior a los mínimos legales (art. 193 bis TRLRHL) — "no refleja la imagen fiel de la situación de solvencia"</p>
+        </div>
+      </div>
+
+      <p>El informe ministerial concluye <b>favorable, pero condicionado a 7 observaciones expresas</b> (cobertura del saldo cta. 413, no dar por disponibles créditos del +4,6% PIE sin Ley de PGE aprobada, dotar correctamente la provisión de insolvencias, entre otras).</p>
+      <div class="callout">Este contraste —entre la lectura favorable de la propia Corporación y las salvedades del órgano de control estatal sobre los mismos datos— es el elemento más objetivo disponible para valorar la solidez real del presupuesto 2026, por encima de cualquier lectura política.</div>
+    </section>
+
+    <section id="s7">
+      <h2><span class="n">7</span> Inversiones</h2>
+      <p>El "Plan de Inversiones" es en realidad <b>cuatrienal (2026-2029)</b>, con fuerte concentración en el primer año:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Año</th><th class="num">Importe</th><th class="num">% del total 4 años</th></tr></thead>
+          <tbody>
+            <tr><td>2026</td><td class="num">8.051.530,90</td><td class="num">74,2%</td></tr>
+            <tr><td>2027</td><td class="num">1.281.986,95</td><td class="num">11,8%</td></tr>
+            <tr><td>2028</td><td class="num">760.000,00</td><td class="num">7,0%</td></tr>
+            <tr><td>2029</td><td class="num">760.000,00</td><td class="num">7,0%</td></tr>
+            <tr class="total"><td>Total</td><td class="num">10.853.517,85</td><td class="num">100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede"><b>Financiación 2026</b> (sin nuevo endeudamiento): Recursos Generales propios 52,4% · Diputación de Cádiz 43,0% · recursos urbanísticos afectados 3,7% · Junta de Andalucía 0,7%.</p>
+      <p class="lede"><b>Proyectos principales:</b> obras e infraestructuras urbanismo (1,15M€) · cubierta Centro Cívico (1,12M€) · Centro de Control Policía Local + fibra (0,67M€) · badenes/radares seguridad vial (0,60M€) · aparcamiento Playa de Getares (0,37M€) · centros docentes (0,35M€) · pista Pump Track (0,31M€) · Teatro Florida (0,30M€).</p>
+      <div class="callout"><b>Riesgo:</b> en 2025 el Cap. VI multiplicó por 4,9 su dotación inicial vía modificaciones de crédito (de 5,26M€ a 25,74M€ definitivos). Los 8,05M€ iniciales de 2026 no deben leerse como techo realista de ejecución del ejercicio.</div>
+    </section>
+
+    <section id="s8">
+      <h2><span class="n">8</span> Comparación con la ejecución real (Liquidación 2025)</h2>
+      <p class="lede">2024 no disponible — ver limitación metodológica en §0.</p>
+
+      <h3>Ejecución de ingresos 2025 — peor ratio de cobro</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Cap.</th><th class="wrap">Concepto</th><th class="num">Recaudación / Presup. Def.</th><th class="wrap">Diagnóstico</th></tr></thead>
+          <tbody>
+            <tr><td>I</td><td class="wrap">Impuestos Directos</td><td class="num">86,09%</td><td class="wrap">Reconocimiento pleno (99,15%), cobro 14 puntos por debajo — riesgo de tesorería</td></tr>
+            <tr><td>III</td><td class="wrap">Tasas y Otros Ingresos</td><td class="num">80,99%</td><td class="wrap">Peor ratio de cobro "core" — morosidad estructural</td></tr>
+            <tr><td>V</td><td class="wrap">Ingresos Patrimoniales</td><td class="num">86,20%</td><td class="wrap">Único capítulo con déficit en reconocimiento y cobro</td></tr>
+            <tr><td>VII</td><td class="wrap">Transferencias de Capital</td><td class="num" style="color:var(--bad); font-weight:700">-5,68%</td><td class="wrap">El más débil: solo 30,21% reconocido; 2026 prevé +310,91% sobre esto</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Ejecución de gastos 2025 — sobre-ejecución sobre crédito inicial</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Cap.</th><th class="wrap">Concepto</th><th class="num">Exceso sobre inicial</th></tr></thead>
+          <tbody>
+            <tr><td>VI</td><td class="wrap">Inversiones Reales</td><td class="num">+34,76% (+1.826.889,10 €)</td></tr>
+            <tr><td>II</td><td class="wrap">Bienes Corrientes</td><td class="num">+21,29% (+8.031.788,94 €)</td></tr>
+            <tr><td>IV</td><td class="wrap">Transferencias Corrientes</td><td class="num">+2,86%</td></tr>
+            <tr><td>I</td><td class="wrap">Personal</td><td class="num">+0,83%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>A nivel agregado, el total 2026 (136,37M€) es prácticamente idéntico (-0,32%) a lo realmente ejecutado en 2025 (136,80M€) — anclaje razonable. Pero la composición interna no es uniformemente realista: <b style="color:var(--bad)">riesgo alto</b> en Cap. VII (+310,91% sobre una base histórica del 30%); <b style="color:var(--warn)">riesgo medio</b> en Personal (margen de solo +0,86%); <b style="color:var(--warn)">riesgo de cobro</b> recurrente en Cap. I, III y V (80-86%).</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="n">9</span> Alegaciones en el expediente</h2>
+      <p class="lede">Contexto del proceso de aprobación, no criterio técnico.</p>
+      <p>El expediente incorpora alegaciones de VOX y de FAPACSA, contestadas conjuntamente por el Secretario General y el Interventor, que las declaran <b>mayoritariamente inadmisibles por motivos procedimentales</b> (art. 170.2 TRLRHL), sin entrar a validar o refutar su contenido de fondo.</p>
+      <div class="callout">FAPACSA alega <b class="num">63.513.905,06 €</b> en derechos reconocidos de difícil o imposible recaudación. La cifra no es desmentida (solo declarada procesalmente inadmisible), y <b>tiene respaldo técnico independiente</b>: el propio informe del Ministerio confirma, por otra vía, que la provisión municipal para insolvencias está por debajo de los mínimos legales. Se recomienda verificarla con independencia de quién la haya planteado.</div>
+    </section>
+
+    <section id="s10">
+      <h2><span class="n">10</span> Anexo — Incidencias documentales</h2>
+      <p class="lede">Ninguna altera las cifras totales aprobadas del presupuesto.</p>
+      <div class="row-item"><span class="tag num">01</span>Fila TOTALES de Gastos (Entidad Local) no coincide con la suma de sus capítulos (109,55M€ publicado vs. 136,37M€ correcto) — Estado de Consolidación (§2).</div>
+      <div class="row-item"><span class="tag num">02</span>Cap. V Ingresos Patrimoniales: texto dice +1,03%; tablas dicen -5,13% — Informe Financiero.</div>
+      <div class="row-item"><span class="tag num">03</span>Cap. II Gastos: una tabla dice "9,79%"; la cifra correcta es 29,79% — pérdida de un dígito.</div>
+      <div class="row-item"><span class="tag num">04</span>Coexisten sin aclarar el perímetro: % Entidad Local vs. % Consolidado, Cap. I y II.</div>
+      <div class="row-item"><span class="tag num">05</span>IIVTNU: texto narrativo cita "1.085.2011,00€"; tablas fijan 1.025.611,00€ — probable artefacto de digitalización.</div>
+      <div class="row-item"><span class="tag num">06</span>Informe de Personal: "DECREMENTO" cuando la aritmética confirma incremento; año citado como "2025" — <code>Personal- REVISAR.md</code>.</div>
+      <div class="row-item"><span class="tag num">07</span>Fecha de la Resolución del Plan de Sostenibilidad Financiera: "11 sept. 2023" vs. "11 oct. 2023" en el mismo documento.</div>
+      <div class="row-item"><span class="tag num">08</span>Referencia al informe "correspondiente al ejercicio 2025" cuando el incorporado es del ejercicio 2026.</div>
+      <div class="row-item"><span class="tag num">09</span>Transferencias a ALGESA+EMCALSA: texto dice 26.923.834,43€; suma de partidas da 26.812.131,53€ (111.702,90€ sin explicar).</div>
+      <div class="row-item"><span class="tag num">10</span>Base 2025 de Ayuda a Domicilio: texto dice 9.040.381,00€; tabla oficial usa 9.490.381,00€ (450.000€ de diferencia).</div>
+      <div class="row-item"><span class="tag num">11</span>Fichero de "Aplicaciones del presupuesto de gastos" solo suma 124,19M€ — conversión incompleta, no error contable real; descartado como fuente.</div>
+      <div class="row-item"><span class="tag num">12</span>Tabla ministerial de deuda viva/ingresos corrientes no reconcilia entre columnas (160,82% repetido para denominadores distintos).</div>
+      <div class="row-item"><span class="tag num">13</span>Discrepancias menores (1.000€-10.000€) entre tablas narrativas y oficiales en varias partidas de Cap. II/III de ingresos.</div>
+    </section>
+
+    <section id="s11">
+      <h2><span class="n">11</span> Plan de gobierno a 8 años</h2>
+      <p class="lede">Ejercicio prospectivo: qué haría un equipo de gobierno con dos mandatos completos para transformar estructuralmente estas cuentas, más allá de un solo ejercicio. Se apoya en los datos ya verificados de este informe y en casos comparables reales de otros ayuntamientos españoles.</p>
+
+      <h3>A · Gasto — 25 medidas en tres fases, detalladas</h3>
+      <p class="lede">Cada medida incluye impacto estimado (con el supuesto de cálculo explícito cuando es una extrapolación, no un dato del expediente), cómo se ejecutaría y plazo, y el principal riesgo. Las cifras "estimadas" son órdenes de magnitud razonados, no cifras oficiales del Ayuntamiento.</p>
+
+      <div class="callout"><b>Fase 1 · Años 1-2 — Diagnóstico y primeras eficiencias</b></div>
+
+      <div class="row-item"><b>1. Oficina de Eficiencia y Buen Gobierno</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> sin ahorro directo en el año 1; palanca habilitante del resto de medidas. Coste de puesta en marcha ≈120.000-150.000€/año (2-3 técnicos), autofinanciado si detecta una sola ineficiencia de ese importe sobre los 48,97M€ del Cap. II sin auditar hoy.</li>
+          <li><b>Ejecución y plazo:</b> unidad dentro de Intervención o Alcaldía con mandato de revisar anualmente los 20 mayores programas de gasto (79,5% del presupuesto). Operativa en 6 meses.</li>
+          <li><b>Riesgo:</b> sin capacidad real de proponer cambios ejecutables, se convierte en otro informe que nadie aplica.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>2. Auditoría de coste-eficiencia de ALGESA</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> una desviación de solo 5-8% sobre el coste de mercado equivaldría a 1,1M-1,8M€/año sobre los 22,41M€ actuales, sin tocar el servicio ni externalizarlo.</li>
+          <li><b>Ejecución y plazo:</b> auditoría externa independiente comparando coste/tonelada e indicadores con 3-5 ciudades similares; resultados publicados. 12-18 meses.</li>
+          <li><b>Riesgo:</b> fricción con dirección/plantilla si se percibe como preludio de recortes — comunicar que el objetivo es reinvertir el ahorro, no reducir la empresa.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>3. Registro único de vencimientos de contratos plurianuales</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> no genera ahorro en sí; evita repetir un "shock" como el de Parques y Jardines (+3,06M€ de golpe).</li>
+          <li><b>Ejecución y plazo:</b> panel interno de todo contrato &gt;100.000€/año, revisión trimestral en Intervención. 1-2 meses, coste casi nulo.</li>
+          <li><b>Riesgo:</b> ninguno relevante — la medida más barata y de menor riesgo de las 25.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>4. Compra agregada de energía</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> 8-15% de ahorro por volumen sobre el gasto energético conjunto (alumbrado + edificios, ≈3-4M€) → 250.000-500.000€/año.</li>
+          <li><b>Ejecución y plazo:</b> licitación única de electricidad y gas para todas las dependencias, posiblemente con ALGESA/EMCALSA. 6-9 meses.</li>
+          <li><b>Riesgo:</b> contratos vigentes con vencimientos distintos pueden obligar a esperar antes de unificar.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>5. Central de tesorería única</b> (Ayuntamiento + ALGESA + EMCALSA)
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> reduce comisiones y pólizas de crédito a corto; podría recuperar buena parte de los 215.000€ de gasto financiero hoy no explicado.</li>
+          <li><b>Ejecución y plazo:</b> comité único de tesorería con visión conjunta de las tres entidades. 6 meses.</li>
+          <li><b>Riesgo:</b> requiere acuerdo de los consejos de administración de ALGESA y EMCALSA.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>6. Amortización anticipada selectiva</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> replicando el caso real localizado (+410.000€/año de ahorro financiero), aplicar parte de los ~9M€ liberados por la carencia de 2026 podría suponer 200.000-500.000€/año.</li>
+          <li><b>Ejecución y plazo:</b> informe de Intervención sobre la operación con peor tipo (probablemente BBVA/Santander 2011); decisión en el año 1.</li>
+          <li><b>Riesgo:</b> el Ahorro Neto ya es negativo — solo hacerlo si no compromete la liquidez a corto plazo.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>7. Plan de cobertura estratégica de vacantes</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> cada vacante cubierta hoy de forma indirecta suele costar más que la plaza reglada; ahorro exacto no cuantificable sin el dato de cobertura actual.</li>
+          <li><b>Ejecución y plazo:</b> cruzar vacantes con gasto en personal eventual/externalización equivalente; priorizar OEP. Primer proceso en el año 2.</li>
+          <li><b>Riesgo:</b> los procesos selectivos tardan 12-24 meses — no es impacto inmediato.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>8. Revisión única e integral de la RPT</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> sin ahorro directo; evita el patrón de errores ya detectado (<code>Personal- REVISAR.md</code>) y da previsibilidad sindical durante los 8 años.</li>
+          <li><b>Ejecución y plazo:</b> revisión técnica completa con participación sindical, no parches anuales. 12 meses.</li>
+          <li><b>Riesgo:</b> proceso sensible sindicalmente — requiere negociación, no imposición.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>9. Estudio del reparto del Consorcio Provincial de Bomberos</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> si la cuota (3,93M€) excede el uso real, el margen podría ser de cientos de miles de euros/año — depende de la fórmula vigente, no incluida en el expediente.</li>
+          <li><b>Ejecución y plazo:</b> solicitar al Consorcio el desglose del reparto. Estudio en 6 meses; renegociación sujeta a acuerdo con otros municipios.</li>
+          <li><b>Riesgo:</b> bajo margen de maniobra unilateral.</li>
+        </ul>
+      </div>
+
+      <div class="callout"><b>Fase 2 · Años 3-5 — Transformación</b></div>
+
+      <div class="row-item"><b>10. Alumbrado LED inteligente</b> (programa IDAE/MITECO)
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> con el 74% de ahorro medio del programa nacional sobre el suministro eléctrico de alumbrado (~2M€) → 1,2-1,5M€/año.</li>
+          <li><b>Ejecución y plazo:</b> convocatoria IDAE/MITECO (préstamo a interés cero, 7-10 años, autofinanciado); ejecución por fases. 2-3 años.</li>
+          <li><b>Riesgo:</b> depende de la convocatoria estatal (se repite varios años seguidos, pero no es decisión unilateral).</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>11. Autoconsumo solar</b> (colegios, polideportivos, edificios)
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> 30-50% de la factura eléctrica de edificios de alto consumo diurno → 150.000-300.000€/año sin inversión inicial (modelo ESE).</li>
+          <li><b>Ejecución y plazo:</b> contrato de servicios energéticos, empezando por mayor consumo diurno. 2-3 años.</li>
+          <li><b>Riesgo:</b> requiere cubiertas en buen estado estructural; auditoría técnica previa.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>12. Electrificación progresiva de la flota municipal</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> 40-60% de ahorro en combustible/mantenimiento frente a combustión; fondos MOVES cubren 30-40% de la inversión.</li>
+          <li><b>Ejecución y plazo:</b> sustitución según amortización natural, priorizando uso intensivo. Progresiva, 3 años.</li>
+          <li><b>Riesgo:</b> autonomía/recarga puede limitar uso en emergencias 24h — empezar por flota administrativa.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>13. Riego inteligente por sensores de humedad</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> 20-30% menos consumo de agua en zonas verdes; coste del agua no desglosado en el contrato (11,16M€) — impacto en euros no precisable con los datos disponibles.</li>
+          <li><b>Ejecución y plazo:</b> sensores y programadores automáticos, incorporados en la revisión de contrato (años 3-4).</li>
+          <li><b>Riesgo:</b> inversión inicial en sensores, menor frente al contrato global.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>14. Cláusula "gain-sharing" en Parques y Jardines</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> no es ahorro directo; cambia el incentivo para que la eficiencia del contratista se comparta en vez de quedar íntegra en su margen.</li>
+          <li><b>Ejecución y plazo:</b> incluir la cláusula en el próximo pliego (el actual, 10,8M€, no la tiene). Próxima revisión contractual, Fase 2.</li>
+          <li><b>Riesgo:</b> mal calibrada, puede generar litigios de interpretación.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>15. Digitalización integral de la tramitación administrativa</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> 20-40% menos tiempo de gestión por expediente; ahorro de capacidad más que monetizable a corto plazo.</li>
+          <li><b>Ejecución y plazo:</b> priorizar licencias urbanísticas, padrón, tasas. 2-3 años.</li>
+          <li><b>Riesgo:</b> inversión inicial en software/formación y gestión del cambio.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>16. Plan activo de gestión del absentismo y salud laboral</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> reducir 1-2 puntos el absentismo en ~780 efectivos puede suponer decenas de miles de euros/año en sustituciones; dato actual no disponible en el expediente.</li>
+          <li><b>Ejecución y plazo:</b> vigilancia de la salud reforzada, plan de prevención actualizado. Resultados desde el año 2.</li>
+          <li><b>Riesgo:</b> requiere inversión en prevención; resultados tardan en consolidarse.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>17. Modelo mixto de prestación en Ayuda a Domicilio</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> no es ahorro directo, sino poder de negociación: un 3-5% menos en el precio/hora del contrato (13,5M€) equivaldría a 400.000-675.000€/año.</li>
+          <li><b>Ejecución y plazo:</b> prestar una parte con medios propios como referencia de coste. Piloto año 3, evaluación 4-5.</li>
+          <li><b>Riesgo:</b> requiere contratar personal propio especializado.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>18. Teleasistencia y domótica</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> libera horas de personal para casos de alta dependencia sin ampliar plantilla; euros no cuantificables con los datos disponibles.</li>
+          <li><b>Ejecución y plazo:</b> identificar casos de menor necesidad presencial. Progresiva durante la Fase 2.</li>
+          <li><b>Riesgo:</b> requiere aceptación de usuarios/familias; no todos los perfiles son sustituibles.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>19. Presupuestación por resultados</b> (Ayuda a Domicilio, Policía Local)
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> no genera ahorro directo; valor de control y de argumentación del gasto social.</li>
+          <li><b>Ejecución y plazo:</b> 3-5 indicadores por programa, publicados junto al presupuesto. Un piloto por año.</li>
+          <li><b>Riesgo:</b> requiere capacidad técnica de análisis de datos hoy quizá inexistente.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>20. Plan de mantenimiento preventivo de vías e infraestructuras</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> el sobrecoste ya visto en 2026 (+854.000€ sobre 500.000€ base) sugiere que lo reactivo es varias veces más caro que lo programado — orden de magnitud: cientos de miles de euros/año.</li>
+          <li><b>Ejecución y plazo:</b> inventario y calendario de mantenimiento programado. Progresiva durante la Fase 2.</li>
+          <li><b>Riesgo:</b> inversión inicial en diagnóstico antes de ver el ahorro.</li>
+        </ul>
+      </div>
+
+      <div class="callout"><b>Fase 3 · Años 6-8 — Consolidación y legado</b></div>
+
+      <div class="row-item"><b>21. Optimización de turnos y despliegue de la Policía Local</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> no es recorte de plantilla (12,82M€); mejor despliegue puede mejorar cobertura sin gasto adicional o liberar horas extra mal dirigidas — sin datos de incidencias por franja horaria no es cuantificable.</li>
+          <li><b>Ejecución y plazo:</b> análisis de datos de incidencias por zona/hora; rediseño de turnos. Fase 3, tras consolidar datos previos.</li>
+          <li><b>Riesgo:</b> cambios de turno sensibles sindicalmente.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>22. Gestión comarcal de residuos</b> (Mancomunidad Campo de Gibraltar)
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> economía de escala sobre el contrato de ALGESA (22,41M€); sin cifra concreta a falta de estudio de viabilidad conjunto.</li>
+          <li><b>Ejecución y plazo:</b> estudio con la Mancomunidad sobre plantas de tratamiento/vertido comarcales. Proyecto plurianual.</li>
+          <li><b>Riesgo:</b> requiere acuerdo político con otros municipios, fuera del control exclusivo de Algeciras.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>23. Refinanciación a tipo fijo</b> de la deuda no concesional
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> depende de la evolución de tipos de interés; solo tiene sentido si el mercado mejora sobre las condiciones actuales del Fondo de Ordenación.</li>
+          <li><b>Ejecución y plazo:</b> seguimiento anual de mercado; ejecutar solo si compensa. Oportunista, Fase 3.</li>
+          <li><b>Riesgo:</b> el grueso de la deuda ya tiene condiciones muy ventajosas — margen de mejora limitado.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>24. Presupuestos participativos</b> (mantenimiento urbano menor)
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> no es ahorro directo, sino mejor asignación del gasto menor.</li>
+          <li><b>Ejecución y plazo:</b> partida acotada (1-2% del Cap. II) a decisión vecinal por distrito. Fase 3, tras digitalización administrativa.</li>
+          <li><b>Riesgo:</b> coste de gestión del propio proceso si no se dimensiona bien.</li>
+        </ul>
+      </div>
+      <div class="row-item"><b>25. Fondo de estabilización municipal</b>
+        <ul class="clean">
+          <li><b>Impacto estimado:</b> reservando 20-30% de cada ahorro verificado, en 8 años podría acumularse un fondo de varios millones de euros para amortización de deuda o imprevistos.</li>
+          <li><b>Ejecución y plazo:</b> acuerdo de Pleno para destinar un % fijo de cada ahorro certificado. Desde que la Oficina de Eficiencia certifique ahorros (Fase 2+).</li>
+          <li><b>Riesgo:</b> requiere disciplina política sostenida los 8 años — la medida más dependiente de la voluntad continuada del equipo de gobierno.</li>
+        </ul>
+      </div>
+
+      <h3>B · Ingresos — subir la recaudación sin subir impuestos</h3>
+      <p class="lede">Explicado en términos simples, pensados para comunicación pública, no para un informe técnico.</p>
+      <ul class="clean">
+        <li><b>Cobrar lo que ya se debe.</b> Hay decenas de millones de euros en impuestos y tasas ya reconocidos pero no cobrados. No es subir impuestos: es que quien debe, pague — como ya hace la inmensa mayoría de los vecinos.</li>
+        <li><b>Cumplir lo que ya hemos prometido.</b> El Ministerio de Hacienda dice que Algeciras se comprometió a reforzar la inspección fiscal y todavía no lo ha hecho. Hacerlo no es una subida nueva: es cumplir un compromiso ya firmado.</li>
+        <li><b>Actualizar precios que llevan años congelados.</b> Algunas tasas municipales no cubren ni el coste del servicio que pagan. Ajustarlas no es, legalmente, subir impuestos — pero hay que explicarlo bien para que no se perciba como tal.</li>
+        <li><b>Que el puerto más grande de España también genere ingresos para la ciudad.</b> La ampliación portuaria ya deja más ingresos municipales por la obra en marcha. Toca negociar para que la próxima inversión privada también deje riqueza fiscal en la ciudad, en vez de que el Ayuntamiento pague solo de su bolsillo los accesos.</li>
+        <li><b>Poner a trabajar el patrimonio que hoy no genera nada.</b> En 2026 no se prevé ni un euro por venta o alquiler de patrimonio municipal. Hay edificios y suelo que podrían alquilarse o cederse en concesión a cambio de un ingreso anual, sin necesidad de venderlos.</li>
+        <li><b>Ir a buscar más dinero europeo.</b> Solo una pequeña parte de la inversión de 2026 viene de fondos europeos. Cuantas más solicitudes bien preparadas, más dinero externo y menos presión sobre el bolsillo municipal.</li>
+        <li><b>Cumplir lo ya pactado en precios públicos.</b> Subir algunos precios deportivos y culturales ya forma parte del plan que el Ayuntamiento firmó con el Estado — no es una decisión nueva que defender, es ejecutar lo ya acordado.</li>
+      </ul>
+    </section>
+
+    <section id="s12">
+      <h2><span class="n">12</span> Conclusiones y recomendaciones</h2>
+      <ol class="clean">
+        <li>El presupuesto 2026 <b>cumple nivelación y estabilidad presupuestaria</b>, con superávit consolidado moderado (874.569,35 €).</li>
+        <li><b>Incumple oficialmente la Regla de Gasto</b> — reconocido en el propio expediente, con posible obligación de Plan Económico-Financiero en liquidación.</li>
+        <li>El <b>nivel de deuda (195,91%)</b> es el mayor condicionante estructural, y explica la tutela financiera del Estado hasta 2070.</li>
+        <li>Existe una <b>discrepancia de fondo entre la valoración favorable del Ayuntamiento y las salvedades del Ministerio</b> — el dato más objetivo disponible para valorar la solidez real del presupuesto.</li>
+        <li>El alivio en amortización de deuda de 2026 (-93%) responde a una <b>carencia transitoria</b>, no a una mejora estructural confirmada.</li>
+        <li>Riesgos concretos de desviación: Cap. VII de ingresos (+310% sobre ejecución real del 30%) y margen mínimo del Cap. I de Personal (+0,86%).</li>
+        <li>La <b>calidad documental del expediente es mejorable</b>: 13+ inconsistencias internas que no afectan al fondo pero deberían subsanarse.</li>
+      </ol>
+
+      <h3>Recomendaciones técnicas</h3>
+      <ul class="clean">
+        <li>Corregir la fila de TOTALES de Gastos (Entidad Local) antes de la publicación definitiva.</li>
+        <li>Actualizar y corregir <code>Personal- REVISAR.md</code> (año, signo, tabla incompleta).</li>
+        <li>Solicitar y documentar el calendario de amortización de deuda más allá de 2026.</li>
+        <li>Reforzar el seguimiento del Cap. VII de ingresos dado su historial de ejecución muy débil.</li>
+        <li>Verificar de forma expresa la cifra de 63,5M€ en derechos de dudoso cobro.</li>
+        <li>Obtener una versión con capa de texto (u OCR) de la Liquidación 2024.</li>
+        <li>Unificar en toda la documentación el perímetro de referencia (Entidad Local vs. Consolidado) al citar variaciones porcentuales.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="doc-footer">
+    Informe elaborado a partir de la documentación del expediente de Presupuesto General 2026 del Excmo. Ayuntamiento de Algeciras, con verificación cruzada entre múltiples fuentes documentales independientes. Las cifras del informe vinculante del Ministerio de Hacienda y del Informe de Intervención municipal se citan como fuente primaria oficial incorporada al propio expediente.
+  </footer>
+</div>

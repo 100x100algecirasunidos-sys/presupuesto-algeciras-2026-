@@ -1,0 +1,390 @@
+<title>Anexo — Grupo de Programa 2025-2026</title>
+<style>
+  :root{
+    --bg:#efece4; --bg-raised:#fbfaf6; --ink:#1c1e1a; --ink-soft:#5a5c52; --ink-faint:#8b8c80;
+    --accent:#0e5c4e; --accent-ink:#0e5c4e; --accent-soft:#dbe8e2;
+    --good:#3f7a4e; --good-soft:#e2ede2; --bad:#a23328; --bad-soft:#f3e1de;
+    --warn:#9c6a17; --warn-soft:#f1e6d2; --line:#d7d2c4; --line-soft:#e5e1d4;
+    --shadow: 0 1px 2px rgba(30,30,20,0.06), 0 8px 24px -12px rgba(30,30,20,0.18);
+  }
+  :root[data-theme="dark"]{
+    --bg:#14160f; --bg-raised:#1c1f18; --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+    --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c;
+    --good:#7fbf8c; --good-soft:#20301f; --bad:#e2837a; --bad-soft:#392320;
+    --warn:#e0ac5a; --warn-soft:#382c17; --line:#33362a; --line-soft:#282b21;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14160f; --bg-raised:#1c1f18; --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+      --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c;
+      --good:#7fbf8c; --good-soft:#20301f; --bad:#e2837a; --bad-soft:#392320;
+      --warn:#e0ac5a; --warn-soft:#382c17; --line:#33362a; --line-soft:#282b21;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif; text-wrap:balance; font-weight:600; color:var(--ink); }
+  .num{ font-variant-numeric:tabular-nums; }
+  .shell{ max-width:1220px; margin:0 auto; padding:0 clamp(16px,4vw,40px) 96px; display:grid; grid-template-columns:220px minmax(0,800px); gap:56px; justify-content:center; }
+  @media (max-width:900px){ .shell{ grid-template-columns:1fr; } nav.toc{ display:none; } }
+  .masthead{ grid-column:1/-1; max-width:840px; margin:0 auto; text-align:center; padding:56px 20px 36px; border-bottom:3px double var(--line); }
+  .masthead .eyebrow{ font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-ink); font-weight:700; margin-bottom:14px; }
+  .masthead h1{ font-size:clamp(1.6rem,3.2vw,2.4rem); margin:0 0 10px; line-height:1.15; }
+  .masthead .sub{ color:var(--ink-soft); font-size:1.02rem; max-width:620px; margin:0 auto 18px; }
+  .masthead .meta{ display:flex; justify-content:center; gap:22px; flex-wrap:wrap; font-size:0.78rem; color:var(--ink-faint); }
+  .masthead .meta span b{ color:var(--ink-soft); font-weight:600; }
+  nav.toc{ position:sticky; top:32px; align-self:start; font-size:0.84rem; }
+  nav.toc .toc-label{ font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); font-weight:700; margin-bottom:10px; }
+  nav.toc ol{ list-style:none; margin:0; padding:0; border-left:1px solid var(--line); }
+  nav.toc a{ display:block; padding:6px 0 6px 14px; margin-left:-1px; border-left:1px solid transparent; color:var(--ink-soft); text-decoration:none; }
+  nav.toc a:hover{ color:var(--accent-ink); border-left-color:var(--accent); }
+  main{ min-width:0; }
+  section{ padding:40px 0; border-bottom:1px solid var(--line-soft); }
+  section:last-child{ border-bottom:none; }
+  section h2{ font-size:1.5rem; margin:0 0 6px; display:flex; align-items:baseline; gap:10px; }
+  section h2 .n{ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color:var(--accent-ink); font-weight:700; font-size:0.95rem; }
+  section h3{ font-size:1.1rem; margin:30px 0 10px; }
+  section h4{ font-size:0.95rem; margin:22px 0 8px; color:var(--accent-ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  section > p{ color:var(--ink); max-width:70ch; }
+  section > p.lede{ color:var(--ink-soft); font-size:0.95rem; margin-top:0; max-width:68ch; }
+  .kpi-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin:22px 0; }
+  .kpi{ background:var(--bg-raised); padding:16px 18px; }
+  .kpi .label{ font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px; }
+  .kpi .value{ font-size:1.25rem; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.2; }
+  .kpi .note{ font-size:0.76rem; color:var(--ink-soft); margin-top:4px; }
+  .table-wrap{ overflow-x:auto; margin:16px 0; border:1px solid var(--line); border-radius:8px; background:var(--bg-raised); }
+  table{ border-collapse:collapse; width:100%; font-size:0.84rem; }
+  caption{ text-align:left; font-size:0.76rem; color:var(--ink-faint); padding:10px 14px 0; }
+  th,td{ padding:8px 12px; text-align:left; border-bottom:1px solid var(--line-soft); white-space:nowrap; }
+  th{ font-size:0.7rem; letter-spacing:0.03em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; background:var(--line-soft); position:sticky; top:0; }
+  td.num, th.num{ text-align:right; font-variant-numeric:tabular-nums; }
+  tr:last-child td{ border-bottom:none; }
+  tr.total td{ font-weight:700; border-top:1px solid var(--ink-faint); }
+  tr.hl td{ background:var(--accent-soft); font-weight:600; }
+  td.wrap, th.wrap{ white-space:normal; }
+  .table-wrap.scroll-body{ max-height:640px; overflow-y:auto; }
+  .callout{ background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:16px 20px; margin:16px 0; font-size:0.93rem; }
+  .callout b{ color:var(--accent-ink); }
+  .callout.warn{ background:var(--warn-soft); border-left-color:var(--warn); }
+  .callout.warn b{ color:var(--warn); }
+  .callout.good{ background:var(--good-soft); border-left-color:var(--good); }
+  .callout.good b{ color:var(--good); }
+  .finding{ border:1px solid var(--line); background:var(--bg-raised); border-radius:10px; padding:18px 22px; margin:16px 0; box-shadow:var(--shadow); }
+  .finding .num-badge{ display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:var(--accent); color:#fff; font-size:0.72rem; font-weight:700; margin-right:8px; }
+  .finding h4{ display:inline; margin:0; font-size:1rem; color:var(--ink); }
+  .finding p{ margin:10px 0 0; font-size:0.92rem; color:var(--ink); }
+  ul.clean, ol.clean{ padding-left:1.2em; margin:12px 0; }
+  ul.clean li, ol.clean li{ margin:6px 0; }
+  footer.doc-footer{ grid-column:1/-1; max-width:680px; margin:24px auto 0; text-align:center; color:var(--ink-faint); font-size:0.8rem; font-style:italic; padding-top:28px; border-top:1px solid var(--line-soft); }
+  a{ color:var(--accent-ink); }
+  code{ background:var(--line-soft); padding:1px 5px; border-radius:4px; font-size:0.85em; }
+</style>
+
+<div class="masthead">
+  <div class="eyebrow">Excmo. Ayuntamiento de Algeciras · Anexo al Informe de Intervención</div>
+  <h1>Gasto por Grupo de Programa<br>Comparativa Presupuesto 2026 vs. Liquidación 2025</h1>
+  <p class="sub">Cruza, por primera vez en este análisis, lo presupuestado para 2026 con lo realmente ejecutado en 2025, al nivel más fino disponible: grupo de programa y concepto económico.</p>
+  <div class="meta">
+    <span><b>Grupos comparados</b> 49</span>
+    <span><b>Verificación</b> 0,00 € de descuadre</span>
+    <span><b>Ejecución global 2025</b> 81,9%</span>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="toc">
+    <div class="toc-label">Índice</div>
+    <ol>
+      <li><a href="#s0">0 · Metodología</a></li>
+      <li><a href="#s1">1 · Resumen comparativo</a></li>
+      <li><a href="#s2">2 · Detalle completo</a></li>
+      <li><a href="#s3">3 · Conclusiones</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section id="s0">
+      <h2><span class="n">0</span> Metodología y verificación</h2>
+      <p class="lede">Se cruzan dos documentos de naturaleza distinta: el <b>Presupuesto 2026</b> (créditos iniciales, una sola magnitud) y la <b>Liquidación 2025</b> (siete magnitudes: inicial, modificaciones, definitivo, comprometido, obligaciones netas, pagos, remanente) — es decir, lo aprobado frente a lo realmente ejecutado.</p>
+      <p>Ninguno se ha tomado del <code>.md</code> convertido: ambos comparten el problema de duplicados del resto del expediente. Se extrajo texto y posición de cada palabra directamente del PDF original, reconstruyendo cada línea por su columna real en la página.</p>
+
+      <div class="callout warn"><b>Dos descuadres encontrados y corregidos durante la verificación:</b> el "Grupo de Programa 313" (2025) y el "Programa 1720" (2026) no tienen nombre impreso en sus respectivos documentos origen, lo que rompía la detección automática de sus cabeceras y desplazaba sus líneas de detalle al grupo anterior. Corregido y verificado.</p></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Magnitud</th><th class="num">Importe verificado</th><th class="num">Grupos que cuadran</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Presupuesto 2026 (créditos iniciales)</td><td class="num">136.366.671,60 €</td><td class="num">49 de 49</td></tr>
+            <tr><td class="wrap">Liquidación 2025 — crédito inicial</td><td class="num">129.445.510,09 €</td><td class="num">54 de 54</td></tr>
+            <tr><td class="wrap">Liquidación 2025 — crédito definitivo</td><td class="num">167.128.901,37 €</td><td class="num">54 de 54</td></tr>
+            <tr><td class="wrap">Liquidación 2025 — obligaciones netas (ejecución real)</td><td class="num">136.798.499,43 €</td><td class="num">54 de 54</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">De los 54 grupos de 2025, <b>49 continúan en 2026</b>. Los 5 restantes (Pensiones, Escuela Sánchez Verdú, Patrimonio Histórico-Artístico, Instalaciones Deportivas, Protección de Datos) tienen <b>0 € en ambos ejercicios</b> — códigos del catálogo oficial sin uso, no programas "eliminados".</p>
+    </section>
+
+    <section id="s1">
+      <h2><span class="n">1</span> Resumen comparativo</h2>
+
+      <div class="kpi-grid">
+        <div class="kpi"><div class="label">Grupos comparados</div><div class="value num">49</div></div>
+        <div class="kpi"><div class="label">Ejecución global 2025</div><div class="value num">81,9%</div></div>
+        <div class="kpi"><div class="label">Crecimiento 2026 vs. inicial 2025</div><div class="value num">+5,35%</div></div>
+        <div class="kpi"><div class="label">Grupos con ejec. 2025 &gt;100%</div><div class="value num">4</div><div class="note">indicio de infrapresupuestación</div></div>
+        <div class="kpi"><div class="label">Grupos con ejec. 2025 &lt;70%</div><div class="value num">11</div><div class="note">sobrepresupuestación o bloqueo</div></div>
+      </div>
+
+      <div class="finding">
+        <span class="num-badge">1</span><h4>El frenazo de la Deuda Pública es un fenómeno de 2026, no una tendencia</h4>
+        <p>El grupo <b>011 Deuda Pública</b> cae <b style="color:var(--bad)">-79,9%</b> (12.172.545,83 € → 2.448.021,16 €) — la mayor caída absoluta de todo el presupuesto (-9,72M€). Pero en <b>2025 la amortización de préstamos a largo plazo se ejecutó con normalidad</b>: 8.518.808,48 € de 9.696.946,65 € presupuestados, <b>87,9% de ejecución</b>. El frenazo no es tendencia — empieza exactamente en 2026, coherente con el periodo de carencia ya detectado en el Informe de Intervención.</p>
+      </div>
+
+      <div class="finding">
+        <span class="num-badge">2</span><h4>Transporte: un riesgo real que se repite con más presupuesto</h4>
+        <p>El grupo <b>440 Administración General del Transporte</b> ejecutó en 2025 solo el <b style="color:var(--bad)">5,3%</b> de su presupuesto — sus tres partidas de inversión (165.300 €, 263.000 € y 100.000 €) quedaron en <b>0 € de ejecución real</b>. Para 2026 el presupuesto <b>sube a 1.118.713,06 € (+92,5%)</b>, con una nueva inversión de 670.000 € del mismo tipo que no se ejecutó en 2025. El caso más claro del expediente de historial de incapacidad de ejecución al que se asigna, aun así, más presupuesto.</p>
+      </div>
+
+      <div class="finding">
+        <span class="num-badge">3</span><h4>Los saltos más alarmantes en % no lo son: verificación cruzada positiva</h4>
+        <p><b>933 Gestión del Patrimonio (+429,9%)</b> y <b>334 Promoción Cultural (+384,6%)</b> se explican, en ambos casos, por <b>una única partida de inversión nueva</b>: 1.115.000 € y 300.000 € respectivamente. Estas cifras <b>coinciden exactamente</b> con dos proyectos ya identificados en la sección de Inversiones del Informe de Intervención (Centro Cívico y Teatro Florida) — confirmación por una vía de datos completamente independiente.</p>
+      </div>
+
+      <div class="finding">
+        <span class="num-badge">4</span><h4>El matiz más importante: el "crecimiento" de Ayuda a Domicilio ya se había gastado en 2025</h4>
+        <p>El concepto de Ayuda a Domicilio se presupuestó en 2025 en 9.828.196 €, pero <b>se ejecutó realmente por 14.699.920 €</b> (+49,6% sobre lo presupuestado, cubierto con modificaciones de crédito). El Presupuesto 2026 asigna <b>13.915.315 €</b> — un +41,6% frente al inicial 2025, pero un <b style="color:var(--good)">5,3% inferior</b> a lo que realmente costó el servicio en 2025. No es "el gasto se dispara" — es que 2025 estaba mal presupuestado desde el principio y 2026 corrige, sin llegar a cubrir del todo, esa infrapresupuestación.</p>
+      </div>
+
+      <div class="finding">
+        <span class="num-badge">5</span><h4>Un fondo europeo con problemas serios de ejecución</h4>
+        <p>El grupo <b>494 FEDER-DUSI</b> tuvo en 2025 un crédito definitivo de <b>16.234.155,12 €</b> (muy por encima de los 662.881 € iniciales), del que solo se ejecutó el <b style="color:var(--bad)">16,5%</b> (2.684.410,92 €). Más de 13,5M€ de fondos europeos comprometidos y sin ejecutar — un punto que merece seguimiento específico.</p>
+      </div>
+
+      <h3>Otros grupos con ejecución 2025 atípica</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div class="table-wrap">
+          <table>
+            <caption>Ejecución &gt; 100% (posible infrapresupuestación)</caption>
+            <thead><tr><th class="wrap">Grupo</th><th class="num">%</th></tr></thead>
+            <tbody>
+              <tr><td class="wrap">923 Información Básica y Estadística</td><td class="num">123,3%</td></tr>
+              <tr><td class="wrap">332 Bibliotecas y Archivos</td><td class="num">116,2%</td></tr>
+              <tr><td class="wrap">912 Órganos de Gobierno</td><td class="num">103,6%</td></tr>
+              <tr><td class="wrap">132 Seguridad y Orden Público</td><td class="num">100,4%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <caption>Ejecución &lt; 70% (sobrepresup. o bloqueo)</caption>
+            <thead><tr><th class="wrap">Grupo</th><th class="num">%</th></tr></thead>
+            <tbody>
+              <tr><td class="wrap">494 FEDER-DUSI</td><td class="num">16,5%</td></tr>
+              <tr><td class="wrap">440 Admón. Gral. Transporte</td><td class="num">5,3%</td></tr>
+              <tr><td class="wrap">929 Imprevistos*</td><td class="num">0,0%</td></tr>
+              <tr><td class="wrap">152 Vivienda</td><td class="num">33,7%</td></tr>
+              <tr><td class="wrap">130 Admón. Gral. Seguridad</td><td class="num">47,1%</td></tr>
+              <tr><td class="wrap">323 Centros Enseñanza Preesc.</td><td class="num">50,7%</td></tr>
+              <tr><td class="wrap">241 Fomento del Empleo</td><td class="num">56,8%</td></tr>
+              <tr><td class="wrap">135 Protección Civil</td><td class="num">60,3%</td></tr>
+              <tr><td class="wrap">334 Promoción Cultural</td><td class="num">65,2%</td></tr>
+              <tr><td class="wrap">153 Vías Públicas</td><td class="num">67,4%</td></tr>
+              <tr><td class="wrap">311 Protección Salubridad</td><td class="num">68,9%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="lede">*929 (Fondo de Contingencia) tiene 0% de ejecución por diseño legal — no es una anomalía, es su función.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="n">2</span> Detalle completo por grupo de programa</h2>
+
+      <h3>2.1 · Tabla comparativa — 49 grupos</h3>
+      <div class="table-wrap scroll-body">
+        <table>
+          <thead><tr><th>Grupo</th><th class="wrap">Denominación</th><th class="num">Presup. 2026</th><th class="num">Inicial 2025</th><th class="num">Definitivo 2025</th><th class="num">Ejecutado 2025</th><th class="num">% Ejec.</th><th class="num">Δ vs Inicial</th></tr></thead>
+          <tbody id="tbody-programas">
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2.2 · Detalle a nivel de concepto — grupos más señalados</h3>
+      <p class="lede">Los códigos de 2025 (5 dígitos) y 2026 (7 dígitos) usan nomenclaturas distintas — el de 2026 se trunca a 5 dígitos para emparejar con el nivel de detalle de la liquidación 2025.</p>
+
+      <h4>011 · Deuda Pública</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Concepto</th><th class="num">Inicial 2025</th><th class="num">Ejecutado 2025</th><th class="num">Presup. 2026</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Intereses de préstamos (L/P y C/P)</td><td class="num">2.474.393,18 €</td><td class="num">604.111,19 €</td><td class="num">1.794.701,00 €</td></tr>
+            <tr><td class="wrap">Concesión préstamo corto plazo (familias)</td><td class="num">600,00 €</td><td class="num">63.300,00 €</td><td class="num">600,00 €</td></tr>
+            <tr><td class="wrap">Amortización anticipada de préstamos</td><td class="num">6,00 €</td><td class="num">0,00 €</td><td class="num">6,00 €</td></tr>
+            <tr><td class="wrap">Amortización préstamo corto plazo</td><td class="num">600,00 €</td><td class="num">0,00 €</td><td class="num">600,00 €</td></tr>
+            <tr class="hl"><td class="wrap">Amortización préstamos largo plazo</td><td class="num">9.696.946,65 €</td><td class="num">8.518.808,48 €</td><td class="num">652.114,00 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>440 · Administración General del Transporte</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Concepto</th><th class="num">Inicial 2025</th><th class="num">Ejecutado 2025</th><th class="num">Presup. 2026</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Estudios y trabajos técnicos Movilidad</td><td class="num">21.700,00 €</td><td class="num">0,00 €</td><td class="num">48.713,00 €</td></tr>
+            <tr><td class="wrap">Transferencia Sociedad Mercantil ALGESA</td><td class="num">31.206,00 €</td><td class="num">31.206,00 €</td><td class="num">400.000,00 €</td></tr>
+            <tr class="hl"><td class="wrap">Inversión nueva en infraestructuras</td><td class="num">165.300,00 €</td><td class="num">0,00 €</td><td class="num">670.000,00 €</td></tr>
+            <tr><td class="wrap">Inversión reposición infraestructuras</td><td class="num">263.000,00 €</td><td class="num">0,00 €</td><td class="num">0,00 €</td></tr>
+            <tr><td class="wrap">Maquinaria e instalaciones técnicas</td><td class="num">100.000,00 €</td><td class="num">0,00 €</td><td class="num">0,00 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>933 · Gestión del Patrimonio</h4>
+      <p class="lede">17 conceptos operativos estables entre 200 € y 68.000 € cada uno, sin cambios relevantes; se muestra solo la partida nueva.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Concepto</th><th class="num">Inicial 2025</th><th class="num">Ejecutado 2025</th><th class="num">Presup. 2026</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td class="wrap">Inversión reposición edificios (Centro Cívico)</td><td class="num">0,00 €</td><td class="num">0,00 €</td><td class="num">1.115.000,00 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>334 · Promoción Cultural</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Concepto</th><th class="num">Inicial 2025</th><th class="num">Ejecutado 2025</th><th class="num">Presup. 2026</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Mantenimiento edificios/maquinaria</td><td class="num">15.000,00 €</td><td class="num">15.094,00 €</td><td class="num">15.000,00 €</td></tr>
+            <tr><td class="wrap">Gastos diversos edición libro</td><td class="num">3.000,00 €</td><td class="num">0,00 €</td><td class="num">3.000,00 €</td></tr>
+            <tr><td class="wrap">Convenio CI Paco de Lucía</td><td class="num">60.000,00 €</td><td class="num">54.450,00 €</td><td class="num">60.000,00 €</td></tr>
+            <tr class="hl"><td class="wrap">Inversión reposición Teatro Florida</td><td class="num">0,00 €</td><td class="num">3.907,94 €</td><td class="num">300.000,00 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>231 · Asistencia Social Primaria</h4>
+      <p class="lede">Conceptos con variación &gt; 20.000 €; el resto son retribuciones de personal con variaciones menores.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Concepto</th><th class="num">Inicial 2025</th><th class="num">Ejecutado 2025</th><th class="num">Presup. 2026</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td class="wrap">Otros trabajos otras empresas (Ayuda a Domicilio)</td><td class="num">9.828.196,00 €</td><td class="num">14.699.920,00 €</td><td class="num">13.915.315,00 €</td></tr>
+            <tr><td class="wrap">A familias e instituciones sin fines de lucro</td><td class="num">165.000,00 €</td><td class="num">608.392,00 €</td><td class="num">191.000,00 €</td></tr>
+            <tr><td class="wrap">Otras transferencias</td><td class="num">453.000,00 €</td><td class="num">478.609,00 €</td><td class="num">559.557,00 €</td></tr>
+            <tr><td class="wrap">Edificios y otras construcciones</td><td class="num">30.000,00 €</td><td class="num">0,00 €</td><td class="num">60.000,00 €</td></tr>
+            <tr><td class="wrap">Retribuciones de personal (varios conceptos)</td><td class="num">~1.170.000,00 €</td><td class="num">~1.501.000,00 €</td><td class="num">~1.407.000,00 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>153 · Vías Públicas</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Concepto</th><th class="num">Inicial 2025</th><th class="num">Ejecutado 2025</th><th class="num">Presup. 2026</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Infraestructuras y bienes</td><td class="num">100.000,00 €</td><td class="num">59.314,00 €</td><td class="num">200.000,00 €</td></tr>
+            <tr class="hl"><td class="wrap">Concesión mantenimiento vías y obras</td><td class="num">500.000,00 €</td><td class="num">459.256,00 €</td><td class="num">1.354.393,00 €</td></tr>
+            <tr><td class="wrap">Inversión nueva infraestructuras</td><td class="num">0,00 €</td><td class="num">3.691,00 €</td><td class="num">670.950,00 €</td></tr>
+            <tr><td class="wrap">Inversión reposición infraestructuras</td><td class="num">299,00 €</td><td class="num">2.096.844,00 €</td><td class="num">654.881,00 €</td></tr>
+            <tr><td class="wrap">Proyectos complejos</td><td class="num">94.269,00 €</td><td class="num">701.141,00 €</td><td class="num">60.217,00 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">La fila de "Inversión reposición infraestructuras" ilustra la volatilidad ya señalada en el Cap. VI del Informe de Intervención: de un crédito inicial casi simbólico en 2025 a una ejecución real de 2,1M€ vía modificaciones de crédito.</p>
+
+      <h4>163 · Limpieza Viaria y 171 · Parques y Jardines — verificación cruzada</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Concepto</th><th>Grupo</th><th class="num">Inicial 2025</th><th class="num">Ejecutado 2025</th><th class="num">Presup. 2026</th><th class="num">Δ</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Transferencia corriente a ALGESA (limpieza)</td><td>163</td><td class="num">21.530.462,00 €</td><td class="num">21.530.462,00 €</td><td class="num">22.410.000,00 €</td><td class="num">+879.538,00 €</td></tr>
+            <tr><td class="wrap">Concesión mantenimiento/reparación parques</td><td>171</td><td class="num">7.741.305,00 €</td><td class="num">9.823.918,00 €</td><td class="num">10.800.000,00 €</td><td class="num">+3.058.695,00 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout good">Ambas cifras coinciden, al euro, con las ya identificadas de forma independiente en el Informe de Intervención (sección 4.3) — confirmación cruzada entre las dos fuentes documentales distintas usadas en este proyecto.</div>
+    </section>
+
+    <section id="s3">
+      <h2><span class="n">3</span> Conclusiones de este anexo</h2>
+      <ol class="clean">
+        <li>La ejecución global del presupuesto 2025 fue razonable (<b>81,9%</b>), pero con dispersión muy amplia: desde 0% (Fondo de Contingencia, por diseño) hasta 123,3%.</li>
+        <li>El frenazo de la Deuda Pública en 2026 es un <b>cambio abrupto, no una tendencia</b> — 2025 amortizó con normalidad (87,9%).</li>
+        <li><b>Transporte (grupo 440)</b> es el programa con el patrón de riesgo más claro: 5,3% de ejecución en 2025 y aun así más presupuesto en 2026 para el mismo tipo de gasto.</li>
+        <li>Los incrementos más extremos en % (Patrimonio, Cultura) están <b>limpiamente justificados</b> por proyectos de inversión ya conocidos.</li>
+        <li>El "crecimiento" de la Ayuda a Domicilio es, en gran parte, la <b>corrección de una infrapresupuestación de 2025</b>, no un aumento real sobre lo que ya costaba.</li>
+        <li><b>FEDER-DUSI</b> merece seguimiento aparte: más de 13,5M€ de fondos europeos con solo 16,5% de ejecución en 2025.</li>
+        <li>Todas las cifras han sido <b>verificadas al céntimo</b> contra los totales del Informe de Intervención, con dos comprobaciones cruzadas (163 y 171) que coinciden exactamente con hallazgos obtenidos por una vía de datos completamente distinta.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="doc-footer">
+    Anexo elaborado mediante extracción posicional directa de "2026 GASTOS Pol. Gastos, Gr.Programa, Programa.pdf" (30 páginas) y de las páginas 115-283 de "Liquidación 2025.pdf" (169 páginas), con verificación exacta (0,00 € de descuadre) entre la suma de conceptos y los 49 y 54 subtotales de grupo de programa impresos en cada documento respectivamente.
+  </footer>
+</div>
+
+<script>
+const rows = [
+["163","Limpieza Viaria","22.505.792,38","21.628.974,09","21.857.415,40","21.747.583,00","99,5%","+4,1%"],
+["231","Asistencia Social Primaria","17.258.799,44","12.721.020,55","21.794.517,42","19.156.811,46","87,9%","+35,7%"],
+["132","Seguridad y Orden Público","12.866.274,20","13.480.986,49","13.480.986,49","13.532.876,67","100,4%","-4,6%"],
+["920","Administración General","11.620.192,53","11.159.951,94","11.337.997,47","9.520.200,80","84,0%","+4,1%"],
+["171","Parques y Jardines","11.160.096,49","8.088.726,58","10.194.860,96","10.111.049,14","99,2%","+38,0%"],
+["151","Urbanismo: Planeamiento, Gestión, Ejecución y Disciplina","5.148.912,12","4.813.868,81","4.945.790,96","3.505.842,71","70,9%","+7,0%"],
+["340","Administración General de Deportes","4.436.271,37","4.148.634,78","4.359.874,15","3.948.545,51","90,6%","+6,9%"],
+["943","Transferencias a Otras Entidades Locales","4.435.792,43","4.200.966,43","4.200.966,43","4.200.966,43","100,0%","+5,6%"],
+["165","Alumbrado Público","3.575.680,93","3.046.780,27","3.646.905,88","3.398.789,55","93,2%","+17,4%"],
+["338","Fiestas Populares y Festejos","3.557.010,04","2.466.964,23","2.772.909,75","2.562.482,64","92,4%","+44,2%"],
+["153","Vías Públicas","3.555.342,12","1.290.405,52","5.839.431,72","3.938.347,08","67,4%","+175,5%"],
+["172","Protección y Mejora del Medio Ambiente","3.178.223,02","3.593.042,35","4.273.632,35","3.231.839,00","75,6%","-11,5%"],
+["934","Gestión de la Deuda y de la Tesorería","2.801.735,41","2.562.333,55","2.976.806,21","2.935.520,05","98,6%","+9,3%"],
+["491","Sociedad de la Información","2.747.567,57","2.430.203,18","3.021.188,68","3.005.594,66","99,5%","+13,1%"],
+["011","Deuda Pública","2.448.021,16","12.172.545,83","11.117.848,87","9.186.219,67","82,6%","-79,9%"],
+["441","Transporte de Viajeros","2.273.131,53","2.273.131,53","2.440.952,60","2.414.057,37","98,9%","+0,0%"],
+["330","Administración General de Cultura","2.061.313,83","2.195.846,40","2.267.290,00","2.008.789,29","88,6%","-6,1%"],
+["931","Política Económica y Fiscal","1.874.622,39","1.624.456,78","2.032.608,08","1.817.073,77","89,4%","+15,4%"],
+["912","Órganos de Gobierno","1.503.370,50","1.486.012,18","1.486.012,18","1.539.165,59","103,6%","+1,2%"],
+["241","Fomento del Empleo","1.423.393,71","1.443.152,35","3.850.131,16","2.188.502,94","56,8%","-1,4%"],
+["933","Gestión del Patrimonio","1.365.190,49","257.645,04","278.628,44","238.253,08","85,5%","+429,9%"],
+["929","Imprevistos y Funciones no Clasificadas","1.337.286,52","1.170.764,66","77.325,02","0,00","0,0%","+14,2%"],
+["932","Gestión del Sistema Tributario","1.288.438,24","1.185.825,44","1.196.771,40","1.147.690,33","95,9%","+8,7%"],
+["320","Administración General de Educación","1.125.870,67","1.150.787,09","1.615.912,66","1.139.238,55","70,5%","-2,2%"],
+["440","Administración General del Transporte","1.118.713,06","581.205,87","589.230,12","31.205,87","5,3%","+92,5%"],
+["925","Atención a los Ciudadanos","1.097.300,52","644.890,81","632.190,81","528.718,46","83,6%","+70,2%"],
+["164","Cementerio y Servicios Funerarios","1.028.754,07","973.059,76","978.061,53","906.062,08","92,6%","+5,7%"],
+["170","Administración General del Medio Ambiente","985.053,94","980.559,66","1.800.416,69","1.749.548,56","97,2%","+0,5%"],
+["133","Ordenación del Tráfico y del Estacionamiento","979.704,55","755.000,00","565.000,00","562.600,32","99,6%","+29,8%"],
+["431","Comercio","636.881,95","568.279,50","541.741,18","492.216,53","90,9%","+12,1%"],
+["130","Admón. General de la Seguridad y Protección Civil","632.187,56","557.288,34","559.147,34","263.250,58","47,1%","+13,4%"],
+["152","Vivienda","571.346,87","426.546,05","1.075.797,93","363.071,17","33,7%","+33,9%"],
+["494","FEDER-DUSI","570.143,12","662.881,00","16.234.155,12","2.684.410,92","16,5%","-14,0%"],
+["326","Servicios Complementarios de Educación","493.303,10","476.506,00","476.506,00","440.515,92","92,4%","+3,5%"],
+["311","Protección de la Salubridad Pública","386.600,41","299.643,80","264.305,57","182.089,97","68,9%","+29,0%"],
+["334","Promoción Cultural","378.000,00","78.000,00","112.657,94","73.451,31","65,2%","+384,6%"],
+["332","Bibliotecas y Archivos","355.121,33","210.920,90","210.921,04","245.123,80","116,2%","+68,4%"],
+["161","Abastecimiento Domiciliario de Agua","305.564,42","306.616,30","517.572,43","469.902,00","90,8%","-0,3%"],
+["924","Participación Ciudadana","296.884,81","287.058,96","278.230,08","245.173,08","88,1%","+3,4%"],
+["432","Información y Promoción Turística","279.931,39","230.026,83","248.041,33","187.831,69","75,7%","+21,7%"],
+["923","Información Básica y Estadística","256.210,80","243.934,83","236.434,83","291.476,64","123,3%","+5,0%"],
+["333","Equipamientos Culturales y Museos","184.231,76","276.586,23","347.752,89","340.686,98","98,0%","-33,4%"],
+["135","Protección Civil","70.347,92","54.109,92","54.708,92","33.012,09","60,3%","+30,0%"],
+["313","(sin denominación en el documento origen — Política 31 Sanidad)","66.669,14","63.809,83","63.809,83","0,00","0,0%","+4,5%"],
+["493","Protección de Consumidores y Usuarios","62.331,19","112.498,83","182.394,91","174.997,17","95,9%","-44,6%"],
+["341","Promoción y Fomento del Deporte","52.000,00","52.000,00","57.000,00","57.000,00","100,0%","+0,0%"],
+["415","Protección y Desarrollo de los Recursos Pesqueros","6.650,00","6.650,00","6.650,00","0,00","0,0%","+0,0%"],
+["462","Investigación y Estudios Relacionados con los Serv. Públ.","3.000,00","3.000,00","28.000,00","0,00","0,0%","+0,0%"],
+["323","Func. Centros de Enseñanza Preescolar y Primaria","1.410,60","1.410,60","1.410,60","715,00","50,7%","+0,0%"],
+];
+const tbody = document.getElementById("tbody-programas");
+let html = "";
+for (const r of rows) {
+  html += `<tr><td>${r[0]}</td><td class="wrap">${r[1]}</td><td class="num">${r[2]} €</td><td class="num">${r[3]} €</td><td class="num">${r[4]} €</td><td class="num">${r[5]} €</td><td class="num">${r[6]}</td><td class="num">${r[7]}</td></tr>`;
+}
+html += `<tr class="total"><td colspan="2">TOTAL</td><td class="num">136.366.671,60 €</td><td class="num">129.445.510,09 €</td><td class="num">167.128.901,37 €</td><td class="num">136.798.499,43 €</td><td class="num">81,9%</td><td class="num">+5,35%</td></tr>`;
+tbody.innerHTML = html;
+</script>

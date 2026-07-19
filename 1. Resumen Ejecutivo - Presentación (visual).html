@@ -1,0 +1,290 @@
+<title>Algeciras 2026 — Resumen Ejecutivo</title>
+<style>
+  :root{
+    --bg:#efece4; --bg-raised:#fbfaf6; --bg-deep:#e5e1d2;
+    --ink:#1c1e1a; --ink-soft:#5a5c52; --ink-faint:#8b8c80;
+    --accent:#0e5c4e; --accent-ink:#0e5c4e; --accent-soft:#dbe8e2; --accent-deep:#0a4038;
+    --good:#3f7a4e; --good-soft:#e2ede2; --bad:#a23328; --bad-soft:#f3e1de;
+    --warn:#9c6a17; --warn-soft:#f1e6d2; --line:#d7d2c4; --line-soft:#e5e1d4;
+    --shadow: 0 1px 2px rgba(30,30,20,0.06), 0 8px 24px -12px rgba(30,30,20,0.18);
+    --shadow-lg: 0 4px 8px rgba(30,30,20,0.08), 0 20px 48px -16px rgba(30,30,20,0.24);
+  }
+  :root[data-theme="dark"]{
+    --bg:#14160f; --bg-raised:#1c1f18; --bg-deep:#0e100b;
+    --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+    --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c; --accent-deep:#0a4038;
+    --good:#7fbf8c; --good-soft:#20301f; --bad:#e2837a; --bad-soft:#392320;
+    --warn:#e0ac5a; --warn-soft:#382c17; --line:#33362a; --line-soft:#282b21;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+    --shadow-lg: 0 4px 8px rgba(0,0,0,0.3), 0 24px 56px -16px rgba(0,0,0,0.6);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14160f; --bg-raised:#1c1f18; --bg-deep:#0e100b;
+      --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+      --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c; --accent-deep:#0a4038;
+      --good:#7fbf8c; --good-soft:#20301f; --bad:#e2837a; --bad-soft:#392320;
+      --warn:#e0ac5a; --warn-soft:#382c17; --line:#33362a; --line-soft:#282b21;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+      --shadow-lg: 0 4px 8px rgba(0,0,0,0.3), 0 24px 56px -16px rgba(0,0,0,0.6);
+    }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3,h4{ font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif; text-wrap:balance; font-weight:600; color:var(--ink); margin:0; }
+  .num{ font-variant-numeric:tabular-nums; }
+  a{ color:var(--accent-ink); }
+  .wrap{ max-width:980px; margin:0 auto; padding:0 clamp(18px,4vw,40px); }
+
+  /* HERO */
+  .hero{ padding:88px 0 64px; text-align:center; border-bottom:3px double var(--line); }
+  .hero .eyebrow{ font-size:0.74rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent-ink); font-weight:700; margin-bottom:18px; }
+  .hero h1{ font-size:clamp(2rem,5vw,3.1rem); line-height:1.1; margin-bottom:18px; }
+  .hero .sub{ font-size:1.08rem; color:var(--ink-soft); max-width:640px; margin:0 auto 8px; }
+  .hero .updated{ font-size:0.78rem; color:var(--ink-faint); margin-top:20px; }
+  .hero-stat{ display:inline-block; font-family:Georgia,serif; font-size:clamp(3.2rem,10vw,5.2rem); font-weight:700; color:var(--bad); line-height:1; margin:28px 0 4px; letter-spacing:-0.02em; }
+  .hero-stat-label{ font-size:0.85rem; color:var(--ink-soft); max-width:420px; margin:0 auto; }
+
+  section{ padding:56px 0; border-bottom:1px solid var(--line-soft); }
+  section.deep{ background:var(--bg-deep); }
+  section:last-of-type{ border-bottom:none; }
+  .eyebrow-sm{ font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent-ink); font-weight:700; margin-bottom:10px; }
+  h2.title{ font-size:clamp(1.5rem,3vw,2rem); margin-bottom:10px; }
+  p.dek{ color:var(--ink-soft); font-size:1rem; max-width:64ch; margin:0 0 28px; }
+
+  /* KPI grid */
+  .kpi-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:var(--shadow); }
+  .kpi{ background:var(--bg-raised); padding:22px 20px; }
+  .kpi .label{ font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; }
+  .kpi .value{ font-size:1.55rem; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.15; font-family:Georgia,serif; }
+  .kpi .note{ font-size:0.78rem; color:var(--ink-soft); margin-top:6px; }
+
+  /* timeline */
+  .tl{ position:relative; margin:32px 0 8px; padding-left:28px; border-left:2px solid var(--line); }
+  .tl-item{ position:relative; padding-bottom:26px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{ content:""; position:absolute; left:-33.5px; top:4px; width:11px; height:11px; border-radius:50%; background:var(--bg); border:2.5px solid var(--accent); }
+  .tl-item.mark::before{ background:var(--accent); }
+  .tl-year{ font-family:Georgia,serif; font-weight:700; font-size:1.05rem; color:var(--accent-ink); }
+  .tl-text{ font-size:0.92rem; color:var(--ink); margin-top:2px; }
+  .tl-text b{ color:var(--ink); }
+
+  /* finding cards */
+  .finding{ display:grid; grid-template-columns:56px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--line-soft); }
+  .finding:last-child{ border-bottom:none; }
+  .finding .fn{ font-family:Georgia,serif; font-size:2rem; font-weight:700; color:var(--accent-soft); line-height:1; -webkit-text-stroke:1.5px var(--accent); }
+  .finding h4{ font-size:1.05rem; margin-bottom:6px; }
+  .finding p{ margin:0; font-size:0.93rem; color:var(--ink-soft); }
+
+  /* confrontation */
+  .confrontation{ display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:center; margin:20px 0; }
+  @media (max-width:640px){ .confrontation{ grid-template-columns:1fr; } .confrontation .vs{ display:none; } }
+  .confrontation .side{ border-radius:12px; padding:18px 20px; box-shadow:var(--shadow); }
+  .confrontation .side.a{ background:var(--bg-raised); border:1px solid var(--line); }
+  .confrontation .side.b{ background:var(--bad-soft); border:1px solid color-mix(in srgb, var(--bad) 30%, transparent); }
+  .confrontation .who{ font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin-bottom:8px; }
+  .confrontation .side.a .who{ color:var(--ink-faint); }
+  .confrontation .side.b .who{ color:var(--bad); }
+  .confrontation .side p{ margin:0; font-size:0.92rem; }
+  .confrontation .vs{ font-family:Georgia,serif; font-style:italic; color:var(--ink-faint); font-size:0.85rem; }
+
+  /* checklist bar */
+  .split-bar{ display:flex; height:14px; border-radius:7px; overflow:hidden; margin:18px 0 10px; box-shadow:var(--shadow); }
+  .split-bar span{ display:block; height:100%; }
+  .split-legend{ display:flex; gap:20px; flex-wrap:wrap; font-size:0.8rem; color:var(--ink-soft); }
+  .split-legend .dot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }
+
+  /* plan phases */
+  .phase-row{ display:grid; grid-template-columns:110px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--line-soft); align-items:baseline; }
+  .phase-row:last-child{ border-bottom:none; }
+  .phase-row .yr{ font-family:Georgia,serif; font-weight:700; color:var(--accent-ink); font-size:0.95rem; }
+  .phase-row .desc{ font-size:0.9rem; color:var(--ink); }
+
+  /* callout */
+  .callout{ background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:18px 22px; margin:20px 0; font-size:0.95rem; }
+  .callout b{ color:var(--accent-ink); }
+  .callout.bad{ background:var(--bad-soft); border-left-color:var(--bad); } .callout.bad b{ color:var(--bad); }
+
+  /* doc index */
+  .doc-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:24px; }
+  .doc-card{ background:var(--bg-raised); border:1px solid var(--line); border-radius:12px; padding:20px 22px; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease; text-decoration:none; display:block; }
+  .doc-card:hover{ transform:translateY(-2px); box-shadow:var(--shadow-lg); }
+  .doc-card .doc-eyebrow{ font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent-ink); font-weight:700; margin-bottom:8px; }
+  .doc-card h4{ font-size:1rem; color:var(--ink); margin-bottom:6px; }
+  .doc-card p{ font-size:0.83rem; color:var(--ink-soft); margin:0; }
+
+  footer.doc-footer{ max-width:680px; margin:40px auto 0; text-align:center; color:var(--ink-faint); font-size:0.8rem; font-style:italic; padding:32px 20px 60px; }
+</style>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Excmo. Ayuntamiento de Algeciras · Presupuesto 2026</div>
+    <h1>Radiografía financiera de<br>Algeciras, en una página</h1>
+    <p class="sub">Resumen ejecutivo del análisis completo — presupuesto, deuda, historia política y sostenibilidad financiera. Cinco informes técnicos, condensados.</p>
+    <div class="hero-stat num">195,91%</div>
+    <p class="hero-stat-label">de deuda viva sobre los ingresos corrientes — casi el doble del límite legal (110%), y 7,9 veces la media de los ayuntamientos españoles.</p>
+    <p class="updated">Datos verificados a partir del expediente oficial del Presupuesto 2026 y la Liquidación 2025</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow-sm">El panorama en cifras</div>
+    <h2 class="title">Lo esencial de un vistazo</h2>
+    <p class="dek">Los ocho números que resumen la situación financiera del Ayuntamiento.</p>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="label">Presupuesto 2026</div><div class="value num">136,37M€</div><div class="note">Ingresos = Gastos, nivelado</div></div>
+      <div class="kpi"><div class="label">Superávit consolidado</div><div class="value num">+874.569 €</div><div class="note">Ayuntamiento + ALGESA + EMCALSA</div></div>
+      <div class="kpi"><div class="label">Deuda viva</div><div class="value num" style="color:var(--bad)">247,7M€</div><div class="note">2ª más alta de la serie histórica</div></div>
+      <div class="kpi"><div class="label">Regla de Gasto</div><div class="value" style="color:var(--bad)">NO CUMPLE</div><div class="note">Reconocido en el propio expediente</div></div>
+      <div class="kpi"><div class="label">Estabilidad Presupuestaria</div><div class="value" style="color:var(--good)">CUMPLE</div><div class="note">+1,13% sobre ingresos no financieros</div></div>
+      <div class="kpi"><div class="label">Deuda por habitante</div><div class="value num">1.957 €</div><div class="note">5,2× la media nacional (378€)</div></div>
+      <div class="kpi"><div class="label">Gasto por habitante</div><div class="value num">1.077 €</div><div class="note">21% menos que la media nacional</div></div>
+      <div class="kpi"><div class="label">Plan de Ajuste vigente hasta</div><div class="value num">2070</div><div class="note">56 años de horizonte de pago</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="deep">
+  <div class="wrap">
+    <div class="eyebrow-sm">19 años en una línea de tiempo</div>
+    <h2 class="title">Quién gobernaba, y qué pasaba con la deuda</h2>
+    <p class="dek">Cronología política y financiera combinada, 2007-2027.</p>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-year">2007-2011</div><div class="tl-text"><b>PSOE + IU</b> (Herrera Hormigo → Sánchez Rull). Deuda viva: 75,5M€ en 2011.</div></div>
+      <div class="tl-item mark"><div class="tl-year">2011</div><div class="tl-text"><b>Landaluce (PP)</b> gana con mayoría absoluta — inicio de 4 mandatos consecutivos hasta hoy.</div></div>
+      <div class="tl-item mark"><div class="tl-year">2012</div><div class="tl-text">Plan estatal de pago a proveedores: la deuda comercial se <b>convierte</b> en deuda financiera. Salto de +90,8M€ en un año.</div></div>
+      <div class="tl-item"><div class="tl-year">2014-2015</div><div class="tl-text">Plan de Ajuste municipal (2014) y adhesión al Fondo de Ordenación (2015).</div></div>
+      <div class="tl-item mark"><div class="tl-year">2023</div><div class="tl-text">Tribunal de Cuentas: Algeciras sigue en "riesgo financiero" pese a 105M€ recibidos 2015-2021. Cámara de Cuentas de Andalucía: opinión desfavorable sobre el control interno de 2019.</div></div>
+      <div class="tl-item mark"><div class="tl-year">2024</div><div class="tl-text"><b>Máximo histórico de deuda: 256,3M€.</b></div></div>
+      <div class="tl-item"><div class="tl-year">2025</div><div class="tl-text">Primera bajada real (-8,5M€, -3,3%) → 247,7M€. Acuerdo CDGAE de abril: nuevo esquema de amortización creciente hasta 2070.</div></div>
+      <div class="tl-item"><div class="tl-year">2025-26</div><div class="tl-text">Landaluce, "no adscrito" a su partido tras una denuncia archivada por la Fiscalía; el PP-A descarta que sea candidato en 2027 pero también una moción de censura.</div></div>
+      <div class="tl-item mark"><div class="tl-year">2027</div><div class="tl-text"><b>Fecha clave:</b> el Ministerio de Hacienda evalúa si Algeciras cumple su Plan de Sostenibilidad. Si no, las condiciones actuales de la deuda pueden endurecerse.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow-sm">Los 5 hallazgos que más importan</div>
+    <h2 class="title">Lo que el análisis demuestra</h2>
+    <div class="finding">
+      <div class="fn">1</div>
+      <div><h4>No es un problema de gasto — es un problema de deuda heredada</h4><p>Algeciras gasta un 21% menos por habitante que la media española. Pero su deuda por habitante es 5,2 veces la media nacional. El origen está en pasivos acumulados antes de 2012, no en gasto corriente excesivo hoy.</p></div>
+    </div>
+    <div class="finding">
+      <div class="fn">2</div>
+      <div><h4>El frenazo de amortización de 2026 tiene explicación oficial exacta</h4><p>El Acuerdo CDGAE de abril de 2025 elimina las carencias existentes y arranca un esquema de cuotas crecientes (+5%/año) desde el 31 de octubre de 2026. Afecta a 51,2M€ — el 20,7% de toda la deuda.</p></div>
+    </div>
+    <div class="finding">
+      <div class="fn">3</div>
+      <div><h4>Los saltos de gasto más alarmantes están limpiamente justificados</h4><p>Incrementos de +430% y +385% en dos programas se explican, verificados por partida individual, por dos proyectos de inversión ya conocidos (Centro Cívico, Teatro Florida) — no son gasto descontrolado.</p></div>
+    </div>
+    <div class="finding">
+      <div class="fn">4</div>
+      <div><h4>El "crecimiento" de la Ayuda a Domicilio es en gran parte una corrección</h4><p>En 2025 se presupuestaron 9,8M€ pero se gastaron realmente 14,7M€. El presupuesto 2026 (13,9M€) es, en realidad, un 5,3% inferior a lo que costó el servicio en 2025 — no una subida real.</p></div>
+    </div>
+    <div class="finding">
+      <div class="fn">5</div>
+      <div><h4>El Plan de Sostenibilidad está a medias: cumple en ingresos, falla en gasto</h4><p>De 17 compromisos verificados, 8 se cumplen (casi todos de subida de impuestos y tasas) y 7 no (casi todos de contención de gasto y calidad de gestión). Un patrón claro, no una opinión.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="deep">
+  <div class="wrap">
+    <div class="eyebrow-sm">El debate político, resuelto con datos</div>
+    <h2 class="title">"La deuda baja" vs. "la deuda sube" — ¿quién tiene razón?</h2>
+    <p class="dek">Las dos afirmaciones pueden ser ciertas a la vez, porque miden cosas distintas.</p>
+    <div class="confrontation">
+      <div class="side a">
+        <div class="who">Gobierno municipal (PP)</div>
+        <p>Deuda reducida en 90M€ desde 2011; proveedores "a cero"</p>
+      </div>
+      <div class="vs">vs.</div>
+      <div class="side b">
+        <div class="who">Oposición (PSOE)</div>
+        <p>Deuda bancaria de 248-253M€; pagando hasta 2070</p>
+      </div>
+    </div>
+    <div class="callout"><b>Lo que dicen los datos oficiales:</b> la deuda <i>comercial</i> (proveedores) sí cayó en picado — de ~158M€ (2011) a solo 6,68 días de periodo medio de pago hoy. Pero la deuda <i>financiera total</i> (bancos + ICO) subió de 75,5M€ (2011) a 247,7M€ (2025). El salto de 2012 explica por qué: la deuda comercial no desapareció, se <b>convirtió</b> en deuda financiera con el Estado. Ambos bandos citan una parte real de la misma historia.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow-sm">Cumplimiento del Plan de Sostenibilidad</div>
+    <h2 class="title">8 de 17 compromisos cumplidos</h2>
+    <div class="split-bar">
+      <span style="width:47.1%; background:var(--good);"></span>
+      <span style="width:41.2%; background:var(--bad);"></span>
+      <span style="width:11.8%; background:var(--warn);"></span>
+    </div>
+    <div class="split-legend">
+      <span><i class="dot" style="background:var(--good)"></i>8 cumple (ingresos, PMP, estabilidad)</span>
+      <span><i class="dot" style="background:var(--bad)"></i>7 no cumple (gasto, ahorro neto, cta. 413)</span>
+      <span><i class="dot" style="background:var(--warn)"></i>2 pendientes (evaluación 2027)</span>
+    </div>
+  </div>
+</section>
+
+<section class="deep">
+  <div class="wrap">
+    <div class="eyebrow-sm">Plan de gobierno a 8 años</div>
+    <h2 class="title">25 medidas de ahorro, en tres fases</h2>
+    <p class="dek">Extracto — el detalle completo de cada medida está en el Informe de Intervención.</p>
+    <div class="phase-row"><div class="yr">Años 1-2</div><div class="desc">Diagnóstico: oficina de eficiencia, auditoría de ALGESA, registro de contratos, amortización anticipada selectiva, plan de vacantes.</div></div>
+    <div class="phase-row"><div class="yr">Años 3-5</div><div class="desc">Transformación: LED inteligente, autoconsumo solar, flota eléctrica, digitalización administrativa, modelo mixto en Ayuda a Domicilio.</div></div>
+    <div class="phase-row"><div class="yr">Años 6-8</div><div class="desc">Consolidación: gestión comarcal de residuos, refinanciación a tipo fijo, fondo de estabilización municipal.</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow-sm">Documentación completa</div>
+    <h2 class="title">Los 7 documentos de este análisis</h2>
+    <p class="dek">Numerados por orden de lectura recomendado. Cada uno verificado al céntimo contra el expediente oficial, con fuentes citadas.</p>
+    <div class="doc-grid">
+      <a class="doc-card" href="0. Glosario y Guía de Lectura (visual).html">
+        <div class="doc-eyebrow">0 · Leer primero</div>
+        <h4>Glosario y Guía de Lectura</h4>
+        <p>Qué significa "clasificación orgánica", "capítulo", "regla de gasto"... y qué documento consultar según lo que quieras saber.</p>
+      </a>
+      <a class="doc-card" href="1. Resumen Ejecutivo - Presentación (visual).html">
+        <div class="doc-eyebrow">1 · Estás aquí</div>
+        <h4>Resumen Ejecutivo — Presentación</h4>
+        <p>La foto general en 2 minutos.</p>
+      </a>
+      <a class="doc-card" href="2. Anexo - Indicadores por Habitante y Cumplimiento del Plan de Sostenibilidad (visual).html">
+        <div class="doc-eyebrow">2 · Anexo</div>
+        <h4>Indicadores por Habitante</h4>
+        <p>Algeciras vs. la media nacional, y el checklist de 17 compromisos del Plan de Sostenibilidad.</p>
+      </a>
+      <a class="doc-card" href="3. Informe de Intervención - Presupuesto 2026 (visual).html">
+        <div class="doc-eyebrow">3 · Informe principal</div>
+        <h4>Informe de Intervención — Presupuesto 2026</h4>
+        <p>Análisis técnico completo: estabilidad, regla de gasto, deuda, ingresos, gastos, personal, y plan de gobierno a 8 años.</p>
+      </a>
+      <a class="doc-card" href="4. Anexo - Historia y Evolución de la Deuda Municipal 2007-2026 (visual).html">
+        <div class="doc-eyebrow">4 · Anexo</div>
+        <h4>Historia y Evolución de la Deuda</h4>
+        <p>Origen, cronología política 2007-2026, y el mecanismo oficial exacto tras el frenazo de 2026.</p>
+      </a>
+      <a class="doc-card" href="5. Anexo - Clasificación Orgánica - Presupuesto 2026 (visual).html">
+        <div class="doc-eyebrow">5 · Anexo</div>
+        <h4>Clasificación Orgánica</h4>
+        <p>El gasto por concejalía/departamento — quién gestiona cada euro, 49 unidades verificadas.</p>
+      </a>
+      <a class="doc-card" href="6. Anexo - Grupo de Programa y Concepto - Comparativa 2025-2026 (visual).html">
+        <div class="doc-eyebrow">6 · Anexo</div>
+        <h4>Grupo de Programa y Concepto</h4>
+        <p>Presupuestado 2026 vs. ejecutado real 2025, programa a programa.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="doc-footer">
+  Resumen ejecutivo elaborado a partir de los siete documentos del análisis del Presupuesto General 2026 del Excmo. Ayuntamiento de Algeciras, todos verificados contra la documentación oficial del expediente y fuentes primarias externas (Ministerio de Hacienda, Tribunal de Cuentas, Cámara de Cuentas de Andalucía, INE, BOE/BOJA).
+</footer>

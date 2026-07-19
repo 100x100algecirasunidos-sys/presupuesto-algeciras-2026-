@@ -1,0 +1,179 @@
+<title>Anexo — Indicadores y Cumplimiento</title>
+<style>
+  :root{
+    --bg:#efece4; --bg-raised:#fbfaf6; --ink:#1c1e1a; --ink-soft:#5a5c52; --ink-faint:#8b8c80;
+    --accent:#0e5c4e; --accent-ink:#0e5c4e; --accent-soft:#dbe8e2;
+    --good:#3f7a4e; --good-soft:#e2ede2; --bad:#a23328; --bad-soft:#f3e1de;
+    --warn:#9c6a17; --warn-soft:#f1e6d2; --line:#d7d2c4; --line-soft:#e5e1d4;
+    --shadow: 0 1px 2px rgba(30,30,20,0.06), 0 8px 24px -12px rgba(30,30,20,0.18);
+  }
+  :root[data-theme="dark"]{
+    --bg:#14160f; --bg-raised:#1c1f18; --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+    --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c;
+    --good:#7fbf8c; --good-soft:#20301f; --bad:#e2837a; --bad-soft:#392320;
+    --warn:#e0ac5a; --warn-soft:#382c17; --line:#33362a; --line-soft:#282b21;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14160f; --bg-raised:#1c1f18; --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+      --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c;
+      --good:#7fbf8c; --good-soft:#20301f; --bad:#e2837a; --bad-soft:#392320;
+      --warn:#e0ac5a; --warn-soft:#382c17; --line:#33362a; --line-soft:#282b21;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif; text-wrap:balance; font-weight:600; color:var(--ink); }
+  .num{ font-variant-numeric:tabular-nums; }
+  .shell{ max-width:1180px; margin:0 auto; padding:0 clamp(16px,4vw,40px) 96px; display:grid; grid-template-columns:220px minmax(0,780px); gap:56px; justify-content:center; }
+  @media (max-width:900px){ .shell{ grid-template-columns:1fr; } nav.toc{ display:none; } }
+  .masthead{ grid-column:1/-1; max-width:840px; margin:0 auto; text-align:center; padding:56px 20px 36px; border-bottom:3px double var(--line); }
+  .masthead .eyebrow{ font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-ink); font-weight:700; margin-bottom:14px; }
+  .masthead h1{ font-size:clamp(1.6rem,3.2vw,2.4rem); margin:0 0 10px; line-height:1.15; }
+  .masthead .sub{ color:var(--ink-soft); font-size:1.02rem; max-width:640px; margin:0 auto 18px; }
+  .masthead .meta{ display:flex; justify-content:center; gap:22px; flex-wrap:wrap; font-size:0.78rem; color:var(--ink-faint); }
+  .masthead .meta span b{ color:var(--ink-soft); font-weight:600; }
+  nav.toc{ position:sticky; top:32px; align-self:start; font-size:0.84rem; }
+  nav.toc .toc-label{ font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); font-weight:700; margin-bottom:10px; }
+  nav.toc ol{ list-style:none; margin:0; padding:0; border-left:1px solid var(--line); }
+  nav.toc a{ display:block; padding:6px 0 6px 14px; margin-left:-1px; border-left:1px solid transparent; color:var(--ink-soft); text-decoration:none; }
+  nav.toc a:hover{ color:var(--accent-ink); border-left-color:var(--accent); }
+  main{ min-width:0; }
+  section{ padding:40px 0; border-bottom:1px solid var(--line-soft); }
+  section:last-child{ border-bottom:none; }
+  section h2{ font-size:1.5rem; margin:0 0 6px; display:flex; align-items:baseline; gap:10px; }
+  section h2 .n{ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color:var(--accent-ink); font-weight:700; font-size:0.95rem; }
+  section h3{ font-size:1.08rem; margin:28px 0 10px; }
+  section > p{ color:var(--ink); max-width:70ch; }
+  section > p.lede{ color:var(--ink-soft); font-size:0.95rem; margin-top:0; max-width:68ch; }
+  .kpi-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin:22px 0; }
+  .kpi{ background:var(--bg-raised); padding:16px 18px; }
+  .kpi .label{ font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px; }
+  .kpi .value{ font-size:1.25rem; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.2; }
+  .kpi .note{ font-size:0.76rem; color:var(--ink-soft); margin-top:4px; }
+  .table-wrap{ overflow-x:auto; margin:16px 0; border:1px solid var(--line); border-radius:8px; background:var(--bg-raised); }
+  table{ border-collapse:collapse; width:100%; font-size:0.85rem; }
+  th,td{ padding:9px 12px; text-align:left; border-bottom:1px solid var(--line-soft); }
+  th{ font-size:0.7rem; letter-spacing:0.03em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; background:var(--line-soft); }
+  td.num, th.num{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr:last-child td{ border-bottom:none; }
+  td.wrap, th.wrap{ white-space:normal; }
+  .callout{ background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:16px 20px; margin:16px 0; font-size:0.93rem; }
+  .callout b{ color:var(--accent-ink); }
+  .pill{ display:inline-flex; align-items:center; gap:5px; padding:3px 10px 3px 8px; border-radius:100px; font-size:0.74rem; font-weight:700; white-space:nowrap; }
+  .pill::before{ content:""; width:6px; height:6px; border-radius:50%; }
+  .pill.good{ background:var(--good-soft); color:var(--good); } .pill.good::before{ background:var(--good); }
+  .pill.bad{ background:var(--bad-soft); color:var(--bad); } .pill.bad::before{ background:var(--bad); }
+  .pill.warn{ background:var(--warn-soft); color:var(--warn); } .pill.warn::before{ background:var(--warn); }
+  footer.doc-footer{ grid-column:1/-1; max-width:680px; margin:24px auto 0; text-align:center; color:var(--ink-faint); font-size:0.8rem; font-style:italic; padding-top:28px; border-top:1px solid var(--line-soft); }
+</style>
+
+<div class="masthead">
+  <div class="eyebrow">Excmo. Ayuntamiento de Algeciras · Anexo al Informe de Intervención</div>
+  <h1>Indicadores por habitante y<br>cumplimiento del Plan de Sostenibilidad</h1>
+  <p class="sub">Las cifras absolutas ya conocidas, en términos por habitante y comparadas con la media nacional oficial — más un checklist consolidado de los 17 compromisos del Plan de Sostenibilidad Financiera.</p>
+  <div class="meta">
+    <span><b>Población</b> 126.589 hab. (INE 2025)</span>
+    <span><b>Fuente comparativa</b> Haciendas Locales en Cifras 2023</span>
+    <span><b>Checklist</b> 8 cumple · 7 no cumple · 2 pendientes</span>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="toc">
+    <div class="toc-label">Índice</div>
+    <ol>
+      <li><a href="#s1">1 · Indicadores por habitante</a></li>
+      <li><a href="#s2">2 · Checklist del Plan</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section id="s1">
+      <h2><span class="n">1</span> Indicadores por habitante</h2>
+      <p class="lede">Población de referencia: <b>126.589 habitantes</b> (Padrón Municipal, INE, 1 de enero de 2025).</p>
+
+      <h3>1.1 · Algeciras vs. media nacional de ayuntamientos</h3>
+      <p class="lede">Fuente de la media nacional: <i>Haciendas Locales en Cifras, Año 2023</i>, Ministerio de Hacienda.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Indicador</th><th class="num">Algeciras</th><th class="num">Media nacional</th><th class="wrap">Diferencia</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Gasto por habitante</td><td class="num">1.077,24 €</td><td class="num">1.361,41 €</td><td class="wrap"><span class="pill good">-20,9%</span></td></tr>
+            <tr><td class="wrap">Deuda viva por habitante</td><td class="num" style="font-weight:700">1.956,91 €</td><td class="num">377,80 €</td><td class="wrap"><span class="pill bad">5,2× la media</span></td></tr>
+            <tr><td class="wrap">Deuda viva / ingresos corrientes</td><td class="num" style="font-weight:700">195,91%</td><td class="num">24,85%</td><td class="wrap"><span class="pill bad">7,9× la media</span></td></tr>
+            <tr><td class="wrap">Rigidez del gasto (Cap. I+III / corriente)</td><td class="num">34,71%</td><td class="num">42,80%</td><td class="wrap"><span class="pill good">-8,1 puntos</span></td></tr>
+            <tr><td class="wrap">Autonomía financiera</td><td class="num">≈54,0%</td><td class="num">53,6%</td><td class="wrap"><span class="pill warn">en línea</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout"><b>El hallazgo más importante de este anexo:</b> Algeciras <b>no es un municipio que gaste más de la cuenta</b> — gasta un 21% menos por habitante que la media española, y su rigidez de gasto está por debajo de la media nacional, no por encima. El problema está concentrado casi en exclusiva en el <b>stock de deuda heredada</b>: 5,2 veces la deuda por habitante de un ayuntamiento medio, y una carga sobre ingresos corrientes casi 8 veces superior a la media. Los datos no sostienen un relato de "gasto descontrolado" — sostienen uno de <b>sobreendeudamiento estructural heredado</b>.</div>
+
+      <p>La misma publicación oficial señala que Andalucía es, junto con Illes Balears y Extremadura, una de las comunidades con <b>menor eficacia recaudatoria del IBI</b> (media nacional: 91,51%). El 86,09% de cobro real de Algeciras en Cap. I (2025) está por debajo de esa media, pero es coherente con un patrón regional, no necesariamente un fallo exclusivamente municipal.</p>
+
+      <h3>1.2 · Comparación con los otros municipios en "riesgo financiero" (Tribunal de Cuentas, 2021)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Municipio</th><th class="num">Deuda per cápita (2021)</th></tr></thead>
+          <tbody>
+            <tr><td>Jaén</td><td class="num">4.427 €</td></tr>
+            <tr><td>Jerez de la Frontera</td><td class="num">4.140 €</td></tr>
+            <tr><td>Parla</td><td class="num">2.652 €</td></tr>
+            <tr style="font-weight:700"><td>Algeciras</td><td class="num">1.775 €</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Dentro del grupo de los 4 municipios que el Tribunal de Cuentas identificó en 2023 en riesgo financiero persistente, Algeciras es, con diferencia, el que tenía menor deuda por habitante en 2021 — menos de la mitad que Jaén.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="n">2</span> Cumplimiento del Plan de Sostenibilidad Financiera</h2>
+      <p class="lede">17 compromisos consolidados de toda la documentación ya verificada, con su estado según el informe vinculante del Ministerio de Hacienda (SGFAL, 14/04/2026) y el resto del expediente.</p>
+
+      <div class="kpi-grid">
+        <div class="kpi"><div class="label">Cumple</div><div class="value num" style="color:var(--good)">8</div></div>
+        <div class="kpi"><div class="label">No cumple</div><div class="value num" style="color:var(--bad)">7</div></div>
+        <div class="kpi"><div class="label">Pendiente</div><div class="value num" style="color:var(--warn)">2</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th class="wrap">Compromiso</th><th>Estado</th><th class="wrap">Fuente</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td class="wrap">Subir el tipo del IBI rústica</td><td><span class="pill good">Cumple</span></td><td class="wrap">Informe SGFAL</td></tr>
+            <tr><td>2</td><td class="wrap">Subir el tipo del IBI urbana</td><td><span class="pill good">Cumple</span></td><td class="wrap">Informe SGFAL</td></tr>
+            <tr><td>3</td><td class="wrap">Subir el coeficiente del IAE</td><td><span class="pill good">Cumple</span></td><td class="wrap">Informe SGFAL</td></tr>
+            <tr><td>4</td><td class="wrap">Subir el coeficiente del IVTM</td><td><span class="pill good">Cumple</span></td><td class="wrap">Informe SGFAL</td></tr>
+            <tr><td>5</td><td class="wrap">Subir el tipo del IIVTNU</td><td><span class="pill good">Cumple</span></td><td class="wrap">Informe SGFAL</td></tr>
+            <tr><td>6</td><td class="wrap">Subir precios públicos y tasas (educativos, culturales, deportivos)</td><td><span class="pill good">Cumple</span></td><td class="wrap">Informe SGFAL</td></tr>
+            <tr><td>7</td><td class="wrap">PMP dentro del límite del Plan (70,21 días)</td><td><span class="pill good">Cumple</span></td><td class="wrap">6,68 días a dic-2025</td></tr>
+            <tr><td>8</td><td class="wrap">Impulsar actuaciones de inspección tributaria</td><td><span class="pill bad">No cumple</span></td><td class="wrap">Informe SGFAL: "no consta la aplicación"</td></tr>
+            <tr><td>9</td><td class="wrap">Disminuir y mantener disminuido el Cap. II desde 2024</td><td><span class="pill bad">No cumple</span></td><td class="wrap">Informe SGFAL</td></tr>
+            <tr><td>10</td><td class="wrap">Reducir ≥5% gastos funcionamiento (I+II), no aumentar 2 ejercicios siguientes</td><td><span class="pill bad">No cumple</span></td><td class="wrap">Informe SGFAL</td></tr>
+            <tr><td>11</td><td class="wrap">Cumplir la Regla de Gasto en fase de aprobación 2026</td><td><span class="pill bad">No cumple</span></td><td class="wrap">Informe de Intervención municipal</td></tr>
+            <tr><td>12</td><td class="wrap">Liquidar sin saldo pendiente en cuenta 413</td><td><span class="pill bad">No cumple</span></td><td class="wrap">2.132.669,40 € pendientes</td></tr>
+            <tr><td>13</td><td class="wrap">Dotar provisión por derechos de dudoso cobro (art. 193 bis TRLRHL)</td><td><span class="pill bad">No cumple</span></td><td class="wrap">Informe SGFAL: bajo mínimos legales</td></tr>
+            <tr><td>14</td><td class="wrap">Ahorro Neto positivo</td><td><span class="pill bad">No cumple</span></td><td class="wrap">-3.394.727,53 € (2025)</td></tr>
+            <tr><td>15</td><td class="wrap">Cumplir el objetivo de Estabilidad Presupuestaria</td><td><span class="pill good">Cumple</span></td><td class="wrap">+1.559.379,05 € (+1,13%)</td></tr>
+            <tr><td>16</td><td class="wrap">Mantener IBI urbana ≥0,8% (condición de la ampliación a 2070)</td><td><span class="pill warn">Pendiente verificar</span></td><td class="wrap">Último dato: 0,8% en 2021</td></tr>
+            <tr><td>17</td><td class="wrap">Superar evaluación del Ministerio sobre la senda de ahorro</td><td><span class="pill warn">Pendiente</span></td><td class="wrap">Aplazada al 1er semestre de 2027</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Lectura del balance</h3>
+      <ul style="padding-left:1.2em;">
+        <li>Los compromisos de <b>ingresos</b> (subir impuestos, tasas y precios públicos) están, en su mayoría, <span class="pill good">cumplidos</span>.</li>
+        <li>Los compromisos de <b>contención del gasto y calidad de la gestión financiera</b> están, en su mayoría, <span class="pill bad">incumplidos</span>.</li>
+      </ul>
+      <div class="callout">Patrón claro y verificable, sin necesidad de tomar partido político: el esfuerzo del Plan de Sostenibilidad se ha concentrado más en el lado de los <b>ingresos</b> que en el de la <b>contención del gasto</b>. El punto 17 (evaluación de 2027) es, con diferencia, la fecha más importante para el futuro financiero del Ayuntamiento de todas las señaladas en este proyecto.</div>
+    </section>
+  </main>
+
+  <footer class="doc-footer">
+    Anexo elaborado combinando las cifras ya verificadas en el Informe de Intervención y sus anexos con datos oficiales del Ministerio de Hacienda ("Haciendas Locales en Cifras 2023" y Padrón Municipal INE 2025). Los indicadores nacionales corresponden al ejercicio 2023 (última publicación oficial disponible); los de Algeciras, al Presupuesto/Liquidación 2025-2026 ya verificados.
+  </footer>
+</div>

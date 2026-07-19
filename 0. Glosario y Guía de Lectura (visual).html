@@ -1,0 +1,138 @@
+<title>Glosario y Guía de Lectura</title>
+<style>
+  :root{
+    --bg:#efece4; --bg-raised:#fbfaf6; --ink:#1c1e1a; --ink-soft:#5a5c52; --ink-faint:#8b8c80;
+    --accent:#0e5c4e; --accent-ink:#0e5c4e; --accent-soft:#dbe8e2;
+    --good:#3f7a4e; --bad:#a23328; --warn:#9c6a17;
+    --line:#d7d2c4; --line-soft:#e5e1d4;
+    --shadow: 0 1px 2px rgba(30,30,20,0.06), 0 8px 24px -12px rgba(30,30,20,0.18);
+  }
+  :root[data-theme="dark"]{
+    --bg:#14160f; --bg-raised:#1c1f18; --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+    --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c;
+    --good:#7fbf8c; --bad:#e2837a; --warn:#e0ac5a;
+    --line:#33362a; --line-soft:#282b21;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14160f; --bg-raised:#1c1f18; --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+      --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c;
+      --good:#7fbf8c; --bad:#e2837a; --warn:#e0ac5a;
+      --line:#33362a; --line-soft:#282b21;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif; text-wrap:balance; font-weight:600; color:var(--ink); }
+  .wrap{ max-width:760px; margin:0 auto; padding:48px clamp(18px,4vw,40px) 80px; }
+  .eyebrow{ font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-ink); font-weight:700; margin-bottom:12px; text-align:center; }
+  h1{ font-size:clamp(1.6rem,3.4vw,2.2rem); text-align:center; margin-bottom:8px; }
+  .sub{ text-align:center; color:var(--ink-soft); font-size:0.95rem; max-width:520px; margin:0 auto 36px; }
+  .masthead{ border-bottom:3px double var(--line); padding-bottom:32px; margin-bottom:36px; }
+
+  h2{ font-size:1.2rem; margin:36px 0 6px; display:flex; align-items:baseline; gap:8px; }
+  h2 .letter{ color:var(--accent-ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-weight:700; font-size:0.9rem; }
+  p.dek{ color:var(--ink-soft); font-size:0.88rem; margin:0 0 16px; }
+  h3{ font-size:0.98rem; margin:22px 0 8px; }
+
+  .table-wrap{ overflow-x:auto; margin:14px 0; border:1px solid var(--line); border-radius:10px; background:var(--bg-raised); box-shadow:var(--shadow); }
+  table{ border-collapse:collapse; width:100%; font-size:0.85rem; }
+  th,td{ padding:9px 13px; text-align:left; border-bottom:1px solid var(--line-soft); vertical-align:top; }
+  th{ font-size:0.68rem; letter-spacing:0.03em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; background:var(--line-soft); }
+  tr:last-child td{ border-bottom:none; }
+  td b{ color:var(--accent-ink); }
+
+  .rule{ background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:12px 16px; margin:14px 0; font-size:0.87rem; }
+  .rule b{ color:var(--accent-ink); }
+
+  footer{ margin-top:44px; padding-top:20px; border-top:1px solid var(--line-soft); text-align:center; color:var(--ink-faint); font-size:0.78rem; font-style:italic; }
+</style>
+
+<div class="wrap">
+  <div class="masthead">
+    <div class="eyebrow">Excmo. Ayuntamiento de Algeciras · Guía de referencia</div>
+    <h1>Glosario y guía de lectura</h1>
+    <p class="sub">Cómo está organizado este análisis, y qué significa cada término — léase antes que el resto de documentos.</p>
+  </div>
+
+  <h2><span class="letter">A</span> El mismo gasto, visto desde tres ángulos</h2>
+  <p class="dek">Cada euro se puede clasificar de tres formas complementarias — no son tres presupuestos distintos, es el mismo dinero mirado desde tres preguntas distintas.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Clasificación</th><th>La pregunta que responde</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td><b>Económica</b> (Capítulo)</td><td>¿En qué <b>tipo</b> de gasto?</td><td>"41,9M€ en nóminas"</td></tr>
+        <tr><td><b>Orgánica</b></td><td>¿<b>Quién</b> lo gestiona?</td><td>"22,4M€ los gestiona Limpieza Viaria"</td></tr>
+        <tr><td><b>Funcional</b> (Programa)</td><td>¿Para <b>qué</b> política pública?</td><td>"13,7M€ para Ayuda a Domicilio"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Los 9 Capítulos de la clasificación económica</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Cap.</th><th>Gasto</th><th>Cap.</th><th>Ingreso</th></tr></thead>
+      <tbody>
+        <tr><td>I</td><td>Personal</td><td>I</td><td>Impuestos Directos (IBI, IAE, IVTM)</td></tr>
+        <tr><td>II</td><td>Bienes corrientes y servicios</td><td>II</td><td>Impuestos Indirectos (ICIO)</td></tr>
+        <tr><td>III</td><td>Financieros (intereses deuda)</td><td>III</td><td>Tasas y Otros Ingresos</td></tr>
+        <tr><td>IV</td><td>Transferencias corrientes</td><td>IV</td><td>Transferencias Corrientes</td></tr>
+        <tr><td>V</td><td>Fondo de Contingencia</td><td>V</td><td>Ingresos Patrimoniales</td></tr>
+        <tr><td>VI</td><td>Inversiones Reales</td><td>VI</td><td>Enajenación de Inversiones</td></tr>
+        <tr><td>VII</td><td>Transferencias de Capital</td><td>VII</td><td>Transferencias de Capital</td></tr>
+        <tr><td>VIII</td><td>Activos Financieros</td><td>VIII</td><td>Activos Financieros</td></tr>
+        <tr><td>IX</td><td>Pasivos Financieros (amortización)</td><td>IX</td><td>Pasivos Financieros (nuevos préstamos)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rule"><b>Regla útil:</b> I-V son operaciones corrientes (el día a día); VI-VII son de capital (inversión); VIII-IX son financieras (deuda, no gasto en servicios).</div>
+
+  <h2><span class="letter">B</span> El ciclo de vida de una partida</h2>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td style="width:32%"><b>Crédito inicial</b></td><td>Lo aprobado al principio del ejercicio (el Presupuesto).</td></tr>
+        <tr><td><b>Modificaciones</b></td><td>Cambios durante el año.</td></tr>
+        <tr><td><b>Crédito definitivo</b></td><td>Inicial + modificaciones = lo que realmente se podía gastar.</td></tr>
+        <tr><td><b>Obligaciones reconocidas</b></td><td>Lo efectivamente gastado — la ejecución real.</td></tr>
+        <tr><td><b>% de ejecución</b></td><td>Obligaciones ÷ Crédito definitivo.</td></tr>
+        <tr><td><b>Liquidación</b></td><td>El cierre de un ejercicio ya terminado — la realidad, frente al Presupuesto (la previsión). En este análisis: <b>Presupuesto 2026</b> = previsión; <b>Liquidación 2025</b> = realidad.</td></tr>
+        <tr><td><b>Remanente de crédito</b></td><td>Lo presupuestado que no llegó a gastarse.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="letter">C</span> Indicadores de salud financiera</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Indicador</th><th>Qué mide</th><th>Algeciras</th></tr></thead>
+      <tbody>
+        <tr><td><b>Deuda viva</b></td><td>Total en préstamos a largo plazo</td><td>247,7M€</td></tr>
+        <tr><td><b>Ratio Deuda/Ing. corrientes</b></td><td>Límite legal: 110%</td><td style="color:var(--bad); font-weight:700">195,91%</td></tr>
+        <tr><td><b>Regla de Gasto</b></td><td>¿El gasto crece más de lo permitido?</td><td style="color:var(--bad); font-weight:700">No cumple</td></tr>
+        <tr><td><b>Estabilidad Presupuestaria</b></td><td>¿Ingresos ≥ gastos no financieros?</td><td style="color:var(--good); font-weight:700">Cumple</td></tr>
+        <tr><td><b>Ahorro Neto</b></td><td>Ahorro Bruto − cuota de deuda</td><td style="color:var(--bad); font-weight:700">Negativo</td></tr>
+        <tr><td><b>Período Medio de Pago</b></td><td>Días en pagar a proveedores</td><td style="color:var(--good); font-weight:700">6,68 días</td></tr>
+        <tr><td><b>Remanente de Tesorería</b></td><td>Liquidez disponible tras liquidar</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="letter">D</span> ¿Qué documento leo según lo que quiero saber?</h2>
+  <div class="table-wrap">
+    <table>
+      <tbody>
+        <tr><td style="width:46%">La foto general en 2 minutos</td><td><b>1. Presentación</b></td></tr>
+        <tr><td>Si Algeciras gasta/debe más o menos que otros ayuntamientos</td><td><b>2. Indicadores por Habitante</b></td></tr>
+        <tr><td>El análisis técnico completo</td><td><b>3. Informe de Intervención</b></td></tr>
+        <tr><td>Por qué hay tanta deuda, desde cuándo, y quién gobernaba</td><td><b>4. Historia de la Deuda</b></td></tr>
+        <tr><td>Qué concejalía gasta cuánto</td><td><b>5. Clasificación Orgánica</b></td></tr>
+        <tr><td>Presupuestado 2026 vs. ejecutado real 2025, programa a programa</td><td><b>6. Grupo de Programa y Concepto</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>Guía de referencia rápida. Para el detalle completo y las fuentes de cada cifra, consultar el documento correspondiente — todos verificados contra el expediente oficial del Presupuesto 2026 y la Liquidación 2025 del Excmo. Ayuntamiento de Algeciras.</footer>
+</div>

@@ -1,0 +1,363 @@
+<title>Anexo — Historia de la Deuda 2007-2026</title>
+<style>
+  :root{
+    --bg:#efece4; --bg-raised:#fbfaf6; --ink:#1c1e1a; --ink-soft:#5a5c52; --ink-faint:#8b8c80;
+    --accent:#0e5c4e; --accent-ink:#0e5c4e; --accent-soft:#dbe8e2;
+    --good:#3f7a4e; --good-soft:#e2ede2; --bad:#a23328; --bad-soft:#f3e1de;
+    --warn:#9c6a17; --warn-soft:#f1e6d2; --line:#d7d2c4; --line-soft:#e5e1d4;
+    --shadow: 0 1px 2px rgba(30,30,20,0.06), 0 8px 24px -12px rgba(30,30,20,0.18);
+  }
+  :root[data-theme="dark"]{
+    --bg:#14160f; --bg-raised:#1c1f18; --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+    --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c;
+    --good:#7fbf8c; --good-soft:#20301f; --bad:#e2837a; --bad-soft:#392320;
+    --warn:#e0ac5a; --warn-soft:#382c17; --line:#33362a; --line-soft:#282b21;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14160f; --bg-raised:#1c1f18; --ink:#e9e7dc; --ink-soft:#aeab9b; --ink-faint:#797868;
+      --accent:#57c2a5; --accent-ink:#7fd7bd; --accent-soft:#1f342c;
+      --good:#7fbf8c; --good-soft:#20301f; --bad:#e2837a; --bad-soft:#392320;
+      --warn:#e0ac5a; --warn-soft:#382c17; --line:#33362a; --line-soft:#282b21;
+      --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px -12px rgba(0,0,0,0.5);
+    }
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif; text-wrap:balance; font-weight:600; color:var(--ink); }
+  .num{ font-variant-numeric:tabular-nums; }
+  .shell{ max-width:1180px; margin:0 auto; padding:0 clamp(16px,4vw,40px) 96px; display:grid; grid-template-columns:220px minmax(0,780px); gap:56px; justify-content:center; }
+  @media (max-width:900px){ .shell{ grid-template-columns:1fr; } nav.toc{ display:none; } }
+  .masthead{ grid-column:1/-1; max-width:840px; margin:0 auto; text-align:center; padding:56px 20px 36px; border-bottom:3px double var(--line); }
+  .masthead .eyebrow{ font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-ink); font-weight:700; margin-bottom:14px; }
+  .masthead h1{ font-size:clamp(1.6rem,3.2vw,2.4rem); margin:0 0 10px; line-height:1.15; }
+  .masthead .sub{ color:var(--ink-soft); font-size:1.02rem; max-width:640px; margin:0 auto 18px; }
+  .masthead .meta{ display:flex; justify-content:center; gap:22px; flex-wrap:wrap; font-size:0.78rem; color:var(--ink-faint); }
+  .masthead .meta span b{ color:var(--ink-soft); font-weight:600; }
+  nav.toc{ position:sticky; top:32px; align-self:start; font-size:0.84rem; }
+  nav.toc .toc-label{ font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); font-weight:700; margin-bottom:10px; }
+  nav.toc ol{ list-style:none; margin:0; padding:0; border-left:1px solid var(--line); }
+  nav.toc a{ display:block; padding:6px 0 6px 14px; margin-left:-1px; border-left:1px solid transparent; color:var(--ink-soft); text-decoration:none; }
+  nav.toc a:hover{ color:var(--accent-ink); border-left-color:var(--accent); }
+  main{ min-width:0; }
+  section{ padding:40px 0; border-bottom:1px solid var(--line-soft); }
+  section:last-child{ border-bottom:none; }
+  section h2{ font-size:1.5rem; margin:0 0 6px; display:flex; align-items:baseline; gap:10px; }
+  section h2 .n{ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; color:var(--accent-ink); font-weight:700; font-size:0.95rem; }
+  section h3{ font-size:1.08rem; margin:28px 0 10px; }
+  section > p{ color:var(--ink); max-width:70ch; }
+  section > p.lede{ color:var(--ink-soft); font-size:0.95rem; margin-top:0; max-width:68ch; }
+  .kpi-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin:22px 0; }
+  .kpi{ background:var(--bg-raised); padding:16px 18px; }
+  .kpi .label{ font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px; }
+  .kpi .value{ font-size:1.25rem; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.2; }
+  .kpi .note{ font-size:0.76rem; color:var(--ink-soft); margin-top:4px; }
+  .table-wrap{ overflow-x:auto; margin:16px 0; border:1px solid var(--line); border-radius:8px; background:var(--bg-raised); }
+  table{ border-collapse:collapse; width:100%; font-size:0.85rem; }
+  th,td{ padding:8px 12px; text-align:left; border-bottom:1px solid var(--line-soft); white-space:nowrap; }
+  th{ font-size:0.7rem; letter-spacing:0.03em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; background:var(--line-soft); }
+  td.num, th.num{ text-align:right; font-variant-numeric:tabular-nums; }
+  tr:last-child td{ border-bottom:none; }
+  td.wrap, th.wrap{ white-space:normal; }
+  .callout{ background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:0 8px 8px 0; padding:16px 20px; margin:16px 0; font-size:0.93rem; }
+  .callout b{ color:var(--accent-ink); }
+  .callout.warn{ background:var(--warn-soft); border-left-color:var(--warn); } .callout.warn b{ color:var(--warn); }
+  .callout.bad{ background:var(--bad-soft); border-left-color:var(--bad); } .callout.bad b{ color:var(--bad); }
+  .phase{ border:1px solid var(--line); background:var(--bg-raised); border-radius:10px; padding:16px 20px; margin:12px 0; }
+  .phase .tag{ font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:var(--accent-ink); margin-bottom:6px; }
+  ul.clean, ol.clean{ padding-left:1.2em; margin:12px 0; }
+  ul.clean li, ol.clean li{ margin:8px 0; }
+  footer.doc-footer{ grid-column:1/-1; max-width:680px; margin:24px auto 0; text-align:center; color:var(--ink-faint); font-size:0.8rem; font-style:italic; padding-top:28px; border-top:1px solid var(--line-soft); }
+  a{ color:var(--accent-ink); }
+  /* chart */
+  .chart-wrap{ background:var(--bg-raised); border:1px solid var(--line); border-radius:10px; padding:20px 16px 8px; margin:20px 0; }
+  .chart-wrap svg{ width:100%; height:auto; display:block; }
+  .chart-line{ fill:none; stroke:var(--accent); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+  .chart-area{ fill:var(--accent); opacity:0.08; }
+  .chart-grid{ stroke:var(--line); stroke-width:1; }
+  .chart-pt{ fill:var(--bg-raised); stroke:var(--accent); stroke-width:2.5; }
+  .chart-pt.peak{ fill:var(--bad); stroke:var(--bad); }
+  .chart-pt.latest{ fill:var(--good); stroke:var(--good); }
+  .chart-label{ font-size:10.5px; fill:var(--ink-faint); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-variant-numeric:tabular-nums; }
+  .chart-label.year{ fill:var(--ink-soft); }
+  .chart-annot{ font-size:10.5px; fill:var(--ink-soft); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  .chart-pt title{ pointer-events:none; }
+</style>
+
+<div class="masthead">
+  <div class="eyebrow">Excmo. Ayuntamiento de Algeciras · Anexo al Informe de Intervención</div>
+  <h1>Historia y evolución de la deuda municipal<br>2007-2026</h1>
+  <p class="sub">Origen, quién gobernaba en cada periodo, evolución año a año desde 2011, y una lectura objetiva del debate político sobre si la deuda ha subido o bajado.</p>
+  <div class="meta">
+    <span><b>Serie</b> Ministerio de Hacienda, 2011-2025</span>
+    <span><b>Deuda 2025</b> 247,7M€ (195,91% ing. corrientes)</span>
+    <span><b>Máximo histórico</b> 256,3M€ (2024)</span>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="toc">
+    <div class="toc-label">Índice</div>
+    <ol>
+      <li><a href="#s0">0 · Metodología</a></li>
+      <li><a href="#s1">1 · Resumen ejecutivo</a></li>
+      <li><a href="#s2">2 · Cronología política</a></li>
+      <li><a href="#s3">3 · Evolución 2011-2025</a></li>
+      <li><a href="#s4">4 · Causas raíz</a></li>
+      <li><a href="#s5">5 · Planes de rescate</a></li>
+      <li><a href="#s6">6 · Últimos 2 años</a></li>
+      <li><a href="#s7">7 · El debate político</a></li>
+      <li><a href="#s8">8 · Conclusiones</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <section id="s0">
+      <h2><span class="n">0</span> Metodología y fuentes</h2>
+      <p class="lede">Combina tres tipos de fuente, cada una tratada con el rigor que le corresponde: (1) fuentes oficiales primarias — Ministerio de Hacienda, Tribunal de Cuentas, Cámara de Cuentas de Andalucía, BOE/BOJA, documentación municipal ya verificada; (2) prensa local/regional/nacional, contrastada entre varias cabeceras; (3) declaraciones políticas, siempre atribuidas explícitamente a quien las hace.</p>
+      <div class="callout warn"><b>Lagunas señaladas, no rellenadas:</b> la deuda viva de 2010 no se ha podido localizar; una cifra de "27M€ de déficit en 2010" tenía una URL de origen de la sección de Jerez de la Frontera de un medio, no de Algeciras, y se descarta; hay discrepancia no resuelta entre fuentes sobre si el horizonte final de pago es 2050 o 2070.</div>
+    </section>
+
+    <section id="s1">
+      <h2><span class="n">1</span> Resumen ejecutivo</h2>
+      <div class="kpi-grid">
+        <div class="kpi"><div class="label">Deuda viva 2011</div><div class="value num">75,5M€</div></div>
+        <div class="kpi"><div class="label">Máximo histórico</div><div class="value num" style="color:var(--bad)">256,3M€ (2024)</div></div>
+        <div class="kpi"><div class="label">Deuda viva 2025</div><div class="value num">247,7M€</div></div>
+        <div class="kpi"><div class="label">Cambio 2011→2025</div><div class="value num" style="color:var(--bad)">+172,2M€</div></div>
+      </div>
+      <ul class="clean">
+        <li>El salto más brusco de la serie (<b>+90,8M€ en 2012</b>) coincide con el "Plan de pago a proveedores" estatal: deuda comercial impagada convertida en deuda financiera con el Estado/ICO, no necesariamente deuda nueva.</li>
+        <li>De 2011 a 2023, alcaldía siempre del <b>PP (Landaluce)</b>, mayoría absoluta salvo 2019-2023 (pacto con Ciudadanos). Antes, 2007-2011, gobierno del <b>PSOE</b> con IU.</li>
+        <li>El <b>Tribunal de Cuentas</b> constató en 2023 que Algeciras seguía en riesgo financiero pese a 105M€ recibidos del Fondo de Ordenación (2015-2021), con solo 1,1M€ de ahorro real de los 12,5M€ previstos.</li>
+        <li>El debate PP (-90M€ desde 2011) vs. PSOE (248-253M€ actual) probablemente mide magnitudes distintas — ver sección 7.</li>
+      </ul>
+    </section>
+
+    <section id="s2">
+      <h2><span class="n">2</span> Cronología política 2007-2026</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Periodo</th><th class="wrap">Alcalde/sa</th><th>Partido</th><th class="wrap">Tipo de gobierno</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">2007-2010</td><td class="wrap">Tomás Herrera Hormigo</td><td>PSOE</td><td class="wrap">Coalición con IU (13+4 de 27)</td></tr>
+            <tr><td class="wrap">2010-2011</td><td class="wrap">Diego Sánchez Rull (sucede a Herrera tras su dimisión)</td><td>PSOE</td><td class="wrap">Continuación coalición con IU</td></tr>
+            <tr><td class="wrap">2011-2015</td><td class="wrap">José Ignacio Landaluce Calleja</td><td>PP</td><td class="wrap">Mayoría absoluta (16/27) — primera vez en solitario</td></tr>
+            <tr><td class="wrap">2015-2019</td><td class="wrap">José Ignacio Landaluce Calleja</td><td>PP</td><td class="wrap">Mayoría absoluta ajustada (14/27)</td></tr>
+            <tr><td class="wrap">2019-2023</td><td class="wrap">José Ignacio Landaluce Calleja</td><td>PP</td><td class="wrap">Sin mayoría propia (13/27); pacto con Ciudadanos</td></tr>
+            <tr><td class="wrap">2023-2027</td><td class="wrap">José Ignacio Landaluce Calleja</td><td>PP</td><td class="wrap">Mayoría absoluta (16/27), 4º mandato</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lede">Desde finales de 2025, Landaluce consta "no adscrito" a su partido tras una denuncia por presunto acoso sexual (archivada en enero de 2026 sin indicios de delito), sin que haya cambiado el gobierno municipal. En junio de 2026 el PP-A descartó presentarlo como candidato en 2027 pero también descartó una moción de censura, alegando necesidad de "estabilidad". Sigue siendo alcalde a fecha de este informe.</p>
+    </section>
+
+    <section id="s3">
+      <h2><span class="n">3</span> Evolución de la deuda viva 2011-2025</h2>
+      <p class="lede">Fuente: informes anuales "Deuda Viva de las Entidades Locales" del Ministerio de Hacienda. Validado de forma cruzada contra Infobae para 2022 (coincidencia exacta).</p>
+
+      <div class="chart-wrap">
+        <svg viewBox="0 0 920 380" role="img" aria-label="Evolución de la deuda viva de Algeciras 2011-2025">
+          <!-- gridlines -->
+          <line class="chart-grid" x1="60" y1="40" x2="860" y2="40"/>
+          <line class="chart-grid" x1="60" y1="320" x2="860" y2="320"/>
+          <text class="chart-label" x="14" y="44">256M€</text>
+          <text class="chart-label" x="14" y="324">75M€</text>
+          <!-- area -->
+          <polygon class="chart-area" points="60,320 60.0,320.0 117.1,179.3 174.3,169.4 231.4,174.5 288.6,154.3 345.7,181.2 402.9,163.0 460.0,133.0 517.1,105.3 574.3,105.3 631.4,102.2 688.6,73.7 745.7,64.1 802.9,40.0 860.0,53.2 860,320"/>
+          <!-- line -->
+          <polyline class="chart-line" points="60.0,320.0 117.1,179.3 174.3,169.4 231.4,174.5 288.6,154.3 345.7,181.2 402.9,163.0 460.0,133.0 517.1,105.3 574.3,105.3 631.4,102.2 688.6,73.7 745.7,64.1 802.9,40.0 860.0,53.2"/>
+          <!-- points -->
+          <circle class="chart-pt" cx="60.0" cy="320.0" r="4.5"><title>2011: 75.546.000 €</title></circle>
+          <circle class="chart-pt" cx="117.1" cy="179.3" r="4.5"><title>2012: 166.344.000 € (+90,8M€, Plan de pago a proveedores)</title></circle>
+          <circle class="chart-pt" cx="174.3" cy="169.4" r="4.5"><title>2013: 172.714.000 €</title></circle>
+          <circle class="chart-pt" cx="231.4" cy="174.5" r="4.5"><title>2014: 169.456.000 € — Plan de Ajuste aprobado</title></circle>
+          <circle class="chart-pt" cx="288.6" cy="154.3" r="4.5"><title>2015: 182.466.000 € — adhesión Fondo de Ordenación</title></circle>
+          <circle class="chart-pt" cx="345.7" cy="181.2" r="4.5"><title>2016: 165.108.000 €</title></circle>
+          <circle class="chart-pt" cx="402.9" cy="163.0" r="4.5"><title>2017: 176.894.000 €</title></circle>
+          <circle class="chart-pt" cx="460.0" cy="133.0" r="4.5"><title>2018: 196.208.000 €</title></circle>
+          <circle class="chart-pt" cx="517.1" cy="105.3" r="4.5"><title>2019: 214.080.000 €</title></circle>
+          <circle class="chart-pt" cx="574.3" cy="105.3" r="4.5"><title>2020: 214.113.000 €</title></circle>
+          <circle class="chart-pt" cx="631.4" cy="102.2" r="4.5"><title>2021: 216.081.000 € — Tribunal de Cuentas: riesgo financiero persistente</title></circle>
+          <circle class="chart-pt" cx="688.6" cy="73.7" r="4.5"><title>2022: 234.511.000 €</title></circle>
+          <circle class="chart-pt" cx="745.7" cy="64.1" r="4.5"><title>2023: 240.697.000 € — refinanciación con Hacienda</title></circle>
+          <circle class="chart-pt peak" cx="802.9" cy="40.0" r="5.5"><title>2024: 256.253.000 € — MÁXIMO HISTÓRICO</title></circle>
+          <circle class="chart-pt latest" cx="860.0" cy="53.2" r="5.5"><title>2025: 247.722.752 € — primera bajada real (-3,3%)</title></circle>
+          <!-- year labels (every other year to avoid crowding) -->
+          <text class="chart-label year" x="52" y="338" text-anchor="middle">2011</text>
+          <text class="chart-label year" x="167" y="338" text-anchor="middle">2013</text>
+          <text class="chart-label year" x="281" y="338" text-anchor="middle">2015</text>
+          <text class="chart-label year" x="395" y="338" text-anchor="middle">2017</text>
+          <text class="chart-label year" x="510" y="338" text-anchor="middle">2019</text>
+          <text class="chart-label year" x="624" y="338" text-anchor="middle">2021</text>
+          <text class="chart-label year" x="738" y="338" text-anchor="middle">2023</text>
+          <text class="chart-label year" x="860" y="338" text-anchor="middle">2025</text>
+          <!-- annotations -->
+          <text class="chart-annot" x="122" y="196" text-anchor="start">← Plan pago a proveedores</text>
+          <text class="chart-annot" x="797" y="30" text-anchor="end">Máximo histórico</text>
+        </svg>
+      </div>
+      <p class="lede">Pase el cursor sobre cada punto para ver el detalle del año. Punto rojo = máximo histórico (2024); punto verde = último dato verificado (2025).</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Año</th><th class="num">Deuda viva</th><th class="num">Variación</th></tr></thead>
+          <tbody>
+            <tr><td>2011</td><td class="num">75.546.000 €</td><td class="num">—</td></tr>
+            <tr><td>2012</td><td class="num">166.344.000 €</td><td class="num" style="color:var(--bad)">+90.798.000 € (+120,2%)</td></tr>
+            <tr><td>2013</td><td class="num">172.714.000 €</td><td class="num">+6.370.000 € (+3,8%)</td></tr>
+            <tr><td>2014</td><td class="num">169.456.000 €</td><td class="num" style="color:var(--good)">-3.258.000 € (-1,9%)</td></tr>
+            <tr><td>2015</td><td class="num">182.466.000 €</td><td class="num">+13.010.000 € (+7,7%)</td></tr>
+            <tr><td>2016</td><td class="num">165.108.000 €</td><td class="num" style="color:var(--good)">-17.358.000 € (-9,5%)</td></tr>
+            <tr><td>2017</td><td class="num">176.894.000 €</td><td class="num">+11.786.000 € (+7,1%)</td></tr>
+            <tr><td>2018</td><td class="num">196.208.000 €</td><td class="num">+19.314.000 € (+10,9%)</td></tr>
+            <tr><td>2019</td><td class="num">214.080.000 €</td><td class="num">+17.872.000 € (+9,1%)</td></tr>
+            <tr><td>2020</td><td class="num">214.113.000 €</td><td class="num">+33.000 € (+0,0%)</td></tr>
+            <tr><td>2021</td><td class="num">216.081.000 €</td><td class="num">+1.968.000 € (+0,9%)</td></tr>
+            <tr><td>2022</td><td class="num">234.511.000 €</td><td class="num">+18.430.000 € (+8,5%)</td></tr>
+            <tr><td>2023</td><td class="num">240.697.000 €</td><td class="num">+6.186.000 € (+2,6%)</td></tr>
+            <tr><td>2024</td><td class="num" style="color:var(--bad); font-weight:700">256.253.000 €</td><td class="num">+15.556.000 € (+6,5%)</td></tr>
+            <tr><td>2025</td><td class="num" style="color:var(--good); font-weight:700">247.722.752 €</td><td class="num" style="color:var(--good)">-8.530.248 € (-3,3%)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Lectura por fases</h3>
+      <div class="phase"><div class="tag">Fase 1 · Antes de 2011 — El origen</div>Deuda histórica desde 1978-2000 (Centro Cívico de La Reconquista), agravada por impagos de AVRA (Junta de Andalucía) desde 2007. Deuda comercial heredada en 2011: ~122M€ + ~40M€ en sentencias, sobre una deuda financiera oficial de 75,5M€.</div>
+      <div class="phase"><div class="tag">Fase 2 · 2012 — Conversión, no eliminación</div>El salto de +90,8M€ coincide con el Plan de pago a proveedores estatal (RDL 4/2012): deuda comercial impagada convertida en deuda financiera a largo plazo con el Estado/ICO. Consistente con la caída independientemente verificada de la deuda comercial (158M€ en 2011 → 31-32M€ en 2017).</div>
+      <div class="phase"><div class="tag">Fase 3 · 2013-2021 — Estabilidad bajo supervisión</div>Con el Plan de Ajuste (2014) y el Fondo de Ordenación (2015), la deuda osciló entre 165M€ y 216M€. El Tribunal de Cuentas constató después que el ahorro real fue de solo 1,1M€ de los 12,5M€ previstos.</div>
+      <div class="phase"><div class="tag">Fase 4 · 2021-2024 — Nuevo repunte al máximo histórico</div>+18,6% en tres años pese a seguir bajo supervisión estatal. Coincide con el informe del Tribunal de Cuentas (nov. 2023) y la opinión desfavorable de la Cámara de Cuentas de Andalucía sobre 2019.</div>
+      <div class="phase"><div class="tag">Fase 5 · 2025 — Primera mejora real</div>-8,5M€ (-3,3%), coincidiendo con el nuevo Plan de Sostenibilidad Financiera y el periodo de carencia detectado en el Informe de Intervención.</div>
+    </section>
+
+    <section id="s4">
+      <h2><span class="n">4</span> Causas raíz</h2>
+
+      <h3>EMUVIASA — empresa municipal de vivienda, extinguida</h3>
+      <p>Confirmado con fuente primaria: la Liquidación 2015 recoge intereses (800.000 € presup., 603.010,22 € ejecutados) y amortización de un préstamo ligado a la construcción de la <b>Barriada del Arroz</b>. El Ayuntamiento <b>sigue pagando intereses de este préstamo en el presupuesto 2026</b>, más de una década después. No se ha podido determinar la fecha ni el mecanismo exacto de su extinción — laguna documental explícita.</p>
+
+      <h3>Emalgesa — la empresa mixta del agua, dos crisis en menos de una década</h3>
+      <p>No confundir con EMCALSA (medios de comunicación). Crisis en 2017-2018 (deuda de 6M€ con el socio privado Aqualia) y en 2024-2025 (pérdidas de 1,71M€, patrimonio neto negativo, causa legal de disolución). El rescate de 2025 incluyó que el Ayuntamiento asumiera tasas portuarias antes repercutidas a la concesionaria — evidencia concreta de un desajuste entre actividad portuaria e ingresos municipales.</p>
+
+      <h3>Transporte urbano (CTM) — concurso y rescate municipal (2020)</h3>
+      <p>La concesionaria privada CTM-Grupo Ruiz entró en concurso de acreedores en diciembre de 2015. El Pleno rescató el servicio el 9 de marzo de 2020, integrándolo en ALGESA. Una sentencia de 2021 condenó al Ayuntamiento a pagar ~7M€ por la liquidación del contrato.</p>
+
+      <h3>La paradoja del puerto</h3>
+      <div class="callout warn"><b>Reivindicación política, no hecho técnico establecido:</b> Fapacsa, la plataforma Andalucía Bay 2030 y voces vecinales reivindican que el Estado condone o compense la deuda por la "servidumbre portuaria". No se ha encontrado ningún estudio fiscal formal que cuantifique el desajuste de forma agregada — el caso de Emalgesa es la única evidencia concreta verificada.</div>
+
+      <h3>Control interno deficiente — hallazgo institucional</h3>
+      <p>La Cámara de Cuentas de Andalucía (Resolución 15/11/2023, sobre el ejercicio 2019) emitió <b>opinión de cumplimiento de legalidad desfavorable</b>: ausencia de supervisión continua, deficiente seguimiento de la morosidad, incumplimiento de plazos legales, falta de publicación de informes. Hallazgo de un órgano de control independiente, no una acusación de parte.</p>
+    </section>
+
+    <section id="s5">
+      <h2><span class="n">5</span> Los sucesivos planes de rescate estatal</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Fecha</th><th class="wrap">Hito</th></tr></thead>
+          <tbody>
+            <tr><td>Feb-Mar 2012</td><td class="wrap">RDL 4/2012 y 7/2012 crean el "Plan de pago a proveedores" estatal (9.263M€ a 3.774 entidades locales)</td></tr>
+            <tr><td>06/06/2014</td><td class="wrap">Aprobación en Pleno del Plan de Ajuste Municipal original</td></tr>
+            <tr><td>14/07/2015</td><td class="wrap">Adhesión al Fondo de Ordenación (RDL 8/2013)</td></tr>
+            <tr><td>2015 / 2016 / 2022</td><td class="wrap">Revisiones sucesivas de las condiciones del Fondo de Ordenación</td></tr>
+            <tr><td>2015-2021</td><td class="wrap">105M€ recibidos del Fondo de Ordenación; ahorro real de solo 1,1M€ de los 12,5M€ previstos (Tribunal de Cuentas)</td></tr>
+            <tr><td>19/09/2023</td><td class="wrap">Acuerdo con Hacienda: reestructuración de 3 de 4 préstamos ICO (~242M€)</td></tr>
+            <tr><td>30/11/2023</td><td class="wrap">Tribunal de Cuentas: Algeciras "no logra revertir su situación de riesgo financiero"</td></tr>
+            <tr><td>15/11/2023</td><td class="wrap">Cámara de Cuentas de Andalucía: opinión desfavorable sobre control interno 2019</td></tr>
+            <tr><td>03/11/2023</td><td class="wrap">Resolución del Secretario de Estado de Hacienda: nueva senda de amortización hasta 31/12/2022</td></tr>
+            <tr><td>24/10/2024</td><td class="wrap">Modificación del Plan de Ajuste + nuevo Plan de Pago a Proveedores (+16,6M€), voto en contra del PSOE</td></tr>
+            <tr><td>27/05/2025</td><td class="wrap">Nueva adhesión al Acuerdo CDGAE — origen del Plan de Sostenibilidad Financiera vigente</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="s6">
+      <h2><span class="n">6</span> Los últimos 2 años con datos reales (2025-2026)</h2>
+      <p class="lede">Enlaza directamente con lo ya verificado en el Informe de Intervención, a partir de la propia documentación oficial — no de fuentes externas.</p>
+      <ul class="clean">
+        <li>Deuda viva a 31/12/2025: <b>247.722.751,96 €</b> — ratio del <b style="color:var(--bad)">195,91%</b> sobre ingresos corrientes (límite legal: 110%).</li>
+        <li><b>2025 amortizó con normalidad</b>: 87,9% de ejecución sobre lo presupuestado para Deuda Pública.</li>
+        <li><b>2026 introduce un frenazo abrupto</b>: solo 652.719,86 € de amortización presupuestada — periodo de carencia en 5 operaciones del Fondo de Ordenación (2022-2024).</li>
+        <li>Ahorro Neto negativo, tanto Entidad Local como consolidado.</li>
+        <li>El Plan de Ajuste vigente se proyecta hasta <b>2070</b> según las Bases de Ejecución — coincide con lo que cita el PSOE; otras fuentes de 2023 citan 2050 para una operación de refinanciación específica.</li>
+      </ul>
+
+      <h3>6.1 · El mecanismo exacto: Acuerdo de la CDGAE de 21 de abril de 2025</h3>
+      <p>Se ha localizado y leído directamente el <b>extracto oficial del Acuerdo de la Comisión Delegada del Gobierno para Asuntos Económicos de 21 de abril de 2025</b> (Secretaría General de Financiación Autonómica y Local, Ministerio de Hacienda) — la misma resolución que el Ayuntamiento cita como origen de su adhesión de 27/05/2025. Fuente primaria oficial, no interpretación de prensa.</p>
+
+      <div class="callout good"><b>A qué grupo pertenece Algeciras:</b> el Acuerdo distingue tres grupos (A, B, C). Algeciras encaja en la <b>letra A)</b> — "sujetos a un plan de sostenibilidad financiera en vigor, aprobado en aplicación de los Acuerdos de la CDGAE de 24 de abril y 18 de julio de 2023" — exactamente las fechas que ya constaban en la documentación municipal. No se le exige la condición de "cuota 2026 ≥ 95% de la cuota 2025" (esa es solo para el grupo B).</div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th class="wrap">Elemento</th><th class="wrap">Contenido literal del Acuerdo</th></tr></thead>
+          <tbody>
+            <tr><td class="wrap">Carencia</td><td class="wrap">"Se suprimirán los períodos de carencia que estén vigentes antes de la aplicación de este Acuerdo" — el propio Acuerdo <b>elimina</b> las carencias, no las prolonga</td></tr>
+            <tr><td class="wrap">Inicio amortización capital</td><td class="wrap"><b>31 de octubre de 2026</b>, para todas las operaciones afectadas</td></tr>
+            <tr><td class="wrap">Esquema de cuotas</td><td class="wrap">Anuales, <b>crecientes, +5% cada año</b>, durante todo el plazo</td></tr>
+            <tr><td class="wrap">Horizonte final</td><td class="wrap">Hasta el <b>31 de octubre de 2070</b> como máximo — o <b>2060</b> según el caso (ver condicionalidad)</td></tr>
+            <tr><td class="wrap">Condicionalidad 10 vs. 20 años</td><td class="wrap">IBI urbana &lt;0,8% en 2025 → +10 años. IBI urbana ≥0,8% → +20 años (de ahí el horizonte 2070). Se puede pasar de 10 a 20 subiendo el tipo antes de enero 2026/2027</td></tr>
+            <tr class="hl"><td class="wrap">Revisión del cumplimiento</td><td class="wrap">"La evaluación por el Ministerio de Hacienda... se desplazará al primer semestre de 2027." Si es negativa: "procederá la revisión de las condiciones financieras... incorporando un diferencial adicional que determinará la CDGAE"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi"><div class="label">Capital en carencia (5 operaciones)</div><div class="value num">51.230.505 €</div><div class="note">20,7% de toda la deuda viva</div></div>
+        <div class="kpi"><div class="label">Intereses 2026 de esas operaciones</div><div class="value num">944.180 €</div><div class="note">se siguen pagando con normalidad</div></div>
+        <div class="kpi"><div class="label">Arranque amortización capital</div><div class="value num">31/10/2026</div><div class="note">solo 2 meses del ejercicio 2026</div></div>
+      </div>
+
+      <p><b>Por qué 2026 muestra casi 0 € de amortización en 5 operaciones:</b> la amortización de capital bajo el nuevo esquema no arranca hasta el 31 de octubre de 2026. Es coherente que la "previsión 2026" certificada por Intervención (fechada 17/03/2026) recoja un importe residual o nulo para esas cinco operaciones — no porque se haya "perdonado" el pago, sino porque el grueso de la primera cuota anual corresponde a un periodo que se extiende más allá del cierre de este ejercicio.</p>
+
+      <h3>Qué cabe esperar para 2027 — con matices, no una alarma automática</h3>
+      <p>2027 será el primer ejercicio completo bajo el nuevo esquema de cuotas crecientes, por lo que <b>es razonable esperar que la amortización presupuestada suba</b> respecto a los 652.113,86 € de 2026. Pero el propio diseño del mecanismo (cuota creciente al 5% anual, no fija desde el primer año) existe precisamente para <b>evitar un salto brusco</b> y repartir el esfuerzo a lo largo de cuatro décadas. No se dispone del tipo de interés y plazo exactos por operación necesarios para calcular la primera cuota con precisión, así que <b>no se ofrece aquí una cifra concreta de 2027</b> — sería falsa precisión.</p>
+
+      <div class="callout bad">Lo verdaderamente relevante de cara a 2027 no es cuánto subirá la cuota, sino que <b>el Ministerio de Hacienda evalúa en el primer semestre de 2027 si Algeciras cumple la senda de ahorro comprometida</b> en su Plan de Sostenibilidad Financiera. Si no la cumple, las condiciones favorables actuales pueden endurecerse con un recargo de interés adicional que fijará la CDGAE.</div>
+    </section>
+
+    <section id="s7">
+      <h2><span class="n">7</span> El debate político: dos relatos, una cifra oficial</h2>
+      <p class="lede">El punto de mayor tensión política del expediente — aquí es donde más importa separar el dato del relato.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th class="wrap">Afirmación</th></tr></thead>
+          <tbody>
+            <tr><td><b>Gobierno (PP)</b></td><td class="wrap">Deuda reducida en 90M€ desde 2011; proveedores "a cero"; 13 préstamos bancarios bilaterales cancelados</td></tr>
+            <tr><td><b>Oposición (PSOE)</b></td><td class="wrap">Deuda bancaria de 248-253M€; deuda total ~300M€; horizonte de pago hasta 2070</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Lo que dicen los datos oficiales</h3>
+      <ul class="clean">
+        <li>La deuda viva total pasó de <b>75,5M€ (2011) a 247,7M€ (2025)</b> — un incremento de <b style="color:var(--bad)">+172,2M€</b>, no una reducción.</li>
+        <li>La deuda <b>comercial/proveedores</b> sí cayó de forma drástica: ~158M€ (2011) → 31-32M€ (2017), y el PMP a cierre de 2025 es de solo <b style="color:var(--good)">6,68 días</b>.</li>
+        <li>El salto de 2012 sugiere que gran parte de la deuda comercial no se extinguió: se <b>convirtió</b> en deuda financiera con el Estado.</li>
+      </ul>
+
+      <div class="callout good">
+        <b>Lectura objetiva:</b> ambas afirmaciones pueden ser ciertas a la vez si se refieren a magnitudes distintas. El PP probablemente mide su "-90M€" contra el conjunto de pasivos heredados en 2011 (comercial + sentencias + préstamos bilaterales de mayor interés, ya cancelados según sus propias declaraciones). El PSOE cita la deuda financiera consolidada con bancos e ICO, que es la que efectivamente ha crecido. Lo que no admite ambigüedad, porque procede de la documentación oficial ya verificada: la deuda viva de 2025 (247,7M€) es la <b>segunda más alta de toda la serie histórica</b>, solo por debajo del máximo de 2024, y representa el 195,91% de los ingresos corrientes.
+      </div>
+    </section>
+
+    <section id="s8">
+      <h2><span class="n">8</span> Conclusiones</h2>
+      <ol class="clean">
+        <li>El origen de la deuda es anterior a 2011 (Centro Cívico 1978-2000, impagos de AVRA desde 2007), agravado por la crisis de 2008-2012.</li>
+        <li>El mecanismo estatal de 2012 no eliminó la deuda: la <b>convirtió</b> de comercial a financiera a largo plazo con el Estado.</li>
+        <li>Bajo supervisión estatal desde 2014, la deuda viva alcanzó su <b>máximo histórico en 2024</b> (256,3M€), pese a las advertencias del Tribunal de Cuentas ya en 2023.</li>
+        <li>2025 es el primer año con mejora real (-8,5M€), coincidiendo con el nuevo Plan de Sostenibilidad Financiera.</li>
+        <li>El frenazo de 2026 (-92,5%) tiene ahora explicación oficial y precisa: el Acuerdo CDGAE de 21/04/2025 <b>elimina</b> las carencias existentes e inicia cuotas anuales crecientes (+5%/año) desde el 31/10/2026, hasta 2060-2070 según el IBI urbana aplicado. Afecta a 51,2M€ (20,7% del total). <b>No es una mejora estructural ni un perdón de deuda — es un aplazamiento con calendario oficial conocido.</b></li>
+        <li>El dato más relevante de cara a 2027 no es cuánto subirá la cuota, sino que <b>el Ministerio de Hacienda evalúa en el primer semestre de 2027</b> el cumplimiento del Plan de Sostenibilidad Financiera — si es negativo, las condiciones actuales pueden endurecerse.</li>
+        <li>El debate "sube o baja" enfrenta dos magnitudes distintas y probablemente no contradictorias: deuda comercial (contenida) vs. deuda financiera total (en máximos históricos).</li>
+        <li>Hay hallazgos institucionales independientes (Tribunal de Cuentas, Cámara de Cuentas de Andalucía) sobre incumplimiento de objetivos y deficiencias de control interno — no son alegaciones políticas, son informes de fiscalización externa.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="doc-footer">
+    Anexo elaborado combinando fuentes primarias oficiales (Ministerio de Hacienda, Tribunal de Cuentas, Cámara de Cuentas de Andalucía, BOE/BOJA, documentación del Ayuntamiento ya verificada en el Informe de Intervención) con prensa local/regional contrastada entre varias cabeceras y declaraciones políticas explícitamente atribuidas. Las lagunas documentales y discrepancias entre fuentes se han señalado de forma explícita en vez de resolverse por estimación.
+  </footer>
+</div>
